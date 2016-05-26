@@ -32,12 +32,12 @@ export default class Layout extends Component {
               <h1><Link to={String(ADMINPATH)} className="logo">{blogInfo.title} Home</Link></h1>
               <div className="icon-menu"></div>
               <nav id="nav">
-                <Link to={ADMINPATH + 'blogInfo'}>Blog Info</Link>
-                <Link to={ADMINPATH + 'articleList'}>Article List</Link>
-                <Link to={ADMINPATH + 'articleTypeList'}>Article Types</Link>
-                <Link to={ADMINPATH + 'articleTagList'}>Article Tags</Link>
-                <Link to={ADMINPATH + 'commentList'}>Comment List</Link>
-                <Link to={ADMINPATH + 'singlePageList'}>Singe Page List</Link>
+                <Link to={ADMINPATH + 'blogInfo'}>Site Info</Link>
+                <Link to={ADMINPATH + 'articleList'}>Posts</Link>
+                <Link to={ADMINPATH + 'articleTypeList'}>Types</Link>
+                <Link to={ADMINPATH + 'articleTagList'}>Tags</Link>
+                <Link to={ADMINPATH + 'commentList'}>Comments</Link>
+                <Link to={ADMINPATH + 'singlePageList'}>Pages</Link>
                 <Link to={ADMINPATH + 'userList'}>Users</Link>
                 <Link to={ADMINPATH + 'adminList'}>Admins</Link>
                 <Link to={ADMINPATH + 'linkList'}>Links</Link>

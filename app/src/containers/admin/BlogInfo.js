@@ -37,7 +37,7 @@ export default class BlogInfo extends Component {
             <tbody>
             <tr>
               <td className="td1">&nbsp;</td>
-              <td><h2>Blog Info</h2></td>
+              <td><h2>Site Info</h2></td>
             </tr>
             <tr>
               <td className="td1">Title：</td>
@@ -92,7 +92,7 @@ export default class BlogInfo extends Component {
         }
       ]),
       props = this.props;
-    
+
     if (data) {
       if (id) {
         editOver(props.update({params: {id}, data}), this);

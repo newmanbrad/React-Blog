@@ -36,13 +36,13 @@ export default class SinglePageList extends Component {
 
       return (
         <div className="main">
-          <Link to={ADMINPATH + 'singlePage'} className="btn">Home</Link>&nbsp;&nbsp;
+          <Link to={ADMINPATH + 'singlePage'} className="btn">Add Page</Link>&nbsp;&nbsp;
           <Alert data={detail.deleteData} loading={detail.deleteing} error={detail.deleteError} showAlert={this.state.showAlert} />
           <div className="table2_wrap">
             <table className="table2">
               <tbody>
               <tr>
-                <th>Page</th>
+                <th>ID</th>
                 <th>Title</th>
                 <th>Path</th>
                 <th>Actions</th>

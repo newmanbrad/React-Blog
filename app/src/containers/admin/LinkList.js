@@ -44,7 +44,7 @@ export default class LinkList extends Component {
               <tbody>
               <tr>
                 <th>ID</th>
-                <th>Name</th>
+                <th>Link</th>
                 <th>URL</th>
                 <th>Actions</th>
               </tr>

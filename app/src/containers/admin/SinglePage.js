@@ -58,7 +58,7 @@ export default class singlePage extends Component {
             <tbody>
             <tr>
               <td className="td1">&nbsp;</td>
-              <td><h2>{xData._id ? 'Sure' : 'Sure'}</h2></td>
+              <td><h2>{xData._id ? 'Edit Page' : 'Add Page'}</h2></td>
             </tr>
             <tr>
               <td className="td1">Title：</td>
