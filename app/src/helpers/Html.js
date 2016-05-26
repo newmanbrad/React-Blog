@@ -26,12 +26,12 @@ export default class Html extends Component {
     return (
       <html>
         <head>
-          {/* 缩放控制 */}
           <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
-          {/* 删除默认的苹果工具栏和菜单栏 */}
           <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"/>
           {DocumentMeta.renderAsReact()}
-          {/* styles (will be present only in production with webpack extract text plugin) */}
+          {/* OVERRIDE Styles - styles (will be present only in production with webpack extract text plugin) */}
           {Object.keys(assets.styles).map((style, key) =>
             <link href={assets.styles[style]} key={key} rel="stylesheet" type="text/css"/>
           )}
