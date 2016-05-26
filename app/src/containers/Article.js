@@ -65,7 +65,7 @@ export default class Article extends Component {
           </article>
           <section className="comment">
             <div style={{display: comments.length ? 'block' : 'none'}}>
-              <h3>留言列表</h3>
+              <h3>Comments</h3>
               <ul>
                 {comments.map((comment, i) => {
                   return (
@@ -75,13 +75,13 @@ export default class Article extends Component {
                         <strong>{comment.user && comment.user.name || comment.admin && comment.admin.name}</strong><br/>
                         <span>{comment.time}</span><br/>
                       </div>
-                      <div className="content">{comment.content}<br/><a href="javascript:void(0)" onClick={this.handleReply.bind(this, comment.user && comment.user.name || comment.admin && comment.admin.name)}>回复</a></div>
+                      <div className="content">{comment.content}<br/><a href="javascript:void(0)" onClick={this.handleReply.bind(this, comment.user && comment.user.name || comment.admin && comment.admin.name)}>Reply</a></div>
                     </li>
                   )
                 })}
               </ul>
             </div>
-            <h3>发表评论</h3>
+            <h3>Add Comment</h3>
             <table>
               <tbody>
               <tr>
@@ -99,7 +99,7 @@ export default class Article extends Component {
               <tr>
                 <td>&nbsp;</td>
                 <td>
-                  <a href="javascript:void(0)" onClick={this.handleSubmit.bind(this, {id: article._id, typePath: article.type.path})} className="btn">Edit</a>&nbsp;&nbsp;
+                  <a href="javascript:void(0)" onClick={this.handleSubmit.bind(this, {id: article._id, typePath: article.type.path})} className="btn">Submit</a>&nbsp;&nbsp;
                   <Alert data={comment.editData} loading={comment.editing} error={comment.editError} validateMsg={this.state.validateMsg} showAlert={this.state.showAlert} />
                 </td>
               </tr>
@@ -130,7 +130,7 @@ export default class Article extends Component {
         }
       ]),
       props = this.props;
-    
+
     if (data) {
       data = {...data, article};
       props.createComment({ data }).then((data) => {
