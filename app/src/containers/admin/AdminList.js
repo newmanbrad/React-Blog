@@ -26,10 +26,9 @@ export default class AdminList extends Component {
     showAlert: false
   }
   render() {
-    let
-      props = this.props,
-      list = props.list,
-      detail = props.detail;
+    let props = this.props,
+        list = props.list,
+        detail = props.detail;
 
     if (list.data && list.data.data) {
       let

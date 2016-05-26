@@ -24,7 +24,7 @@ export default class Welcome extends Component {
       return (
         <div className="main">
           <div className="welcome">
-            <h1>欢迎{name ? ' ' + name + '!' : <span>! <Link to={ADMINPATH + 'login'}>请登陆</Link></span>}</h1>
+            <h1>Welcome{name ? ' ' + name + '!' : <span>! <Link to={ADMINPATH + 'login'}>Login</Link></span>}</h1>
           </div>
         </div>
       )

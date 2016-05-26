@@ -24,7 +24,7 @@ function fetchData(getState, dispatch, location) {
 export default class ArticleList extends Component {
   state = {
     showAlert: false
-  }
+  };
   render() {
     let
       props = this.props,
@@ -37,24 +37,23 @@ export default class ArticleList extends Component {
 
       return (
         <div className="main admin">
-          <Link to={ADMINPATH + 'article'} className="btn">新增</Link>&nbsp;&nbsp;
+          <Link to={ADMINPATH + 'article'} className="btn">Add Article</Link>&nbsp;&nbsp;
           <Alert data={article.deleteData} loading={article.deleteing} error={article.deleteError} showAlert={this.state.showAlert} />
           <div className="table2_wrap">
             <table className="table2">
               <tbody>
               <tr>
-                <th>序号</th>
-                <th>标题</th>
-                <th>作者</th>
-                <th>阅读次数</th>
-                <th>所属类别</th>
-                <th>标签</th>
-                <th>留言数</th>
-                <th>添加时间</th>
-                <th>最后编辑时间</th>
-                <th>已发布</th>
-                <th>操作</th>
-                <th></th>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Visits</th>
+                <th>Type</th>
+                <th>Tags</th>
+                <th>Comments</th>
+                <th>Created</th>
+                <th>Edited</th>
+                <th>Status</th>
+                <th>Actions</th>
               </tr>
               {articles.map((article, i) => {
                 return (
@@ -72,10 +71,10 @@ export default class ArticleList extends Component {
                     <td><Link to={ADMINPATH + 'commentList'} query={{'article.id': article._id}}>{article.commentCount}</Link></td>
                     <td>{article.createTime.slice(0, 10)}</td>
                     <td>{article.lastEditTime.slice(0, 10)}</td>
-                    <td>{article.enabled ? '是' : '否'}</td>
+                    <td>{article.enabled ? 'Enabled' : 'Disabled'}</td>
                     <td>
-                      <Link to={ADMINPATH + 'article'} query={{id: article._id}}>编辑</Link>&nbsp;&nbsp;
-                      <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, article._id)}>删除</a>
+                      <Link to={ADMINPATH + 'article'} query={{id: article._id}}>Edit</Link>&nbsp;&nbsp;
+                      <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, article._id)}>Delete</a>
                     </td>
                   </tr>
                 )

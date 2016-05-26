@@ -37,28 +37,28 @@ export default class BlogInfo extends Component {
             <tbody>
             <tr>
               <td className="td1">&nbsp;</td>
-              <td><h2>博客信息管理</h2></td>
+              <td><h2>Blog Info</h2></td>
             </tr>
             <tr>
-              <td className="td1">标题：</td>
+              <td className="td1">Title：</td>
               <td><input type="text" ref="title" className="form-control wd3" defaultValue={blogInfo.title}/></td>
             </tr>
             <tr>
-              <td className="td1">关键词：</td>
+              <td className="td1">Keywords：</td>
               <td><textarea ref="keywords" className="form-control wd6 hg1" defaultValue={blogInfo.keywords}/></td>
             </tr>
             <tr>
-              <td className="td1">描述：</td>
+              <td className="td1">Description：</td>
               <td><textarea ref="description" className="form-control wd6 hg1" defaultValue={blogInfo.description}/></td>
             </tr>
             <tr>
-              <td className="td1">版权：</td>
+              <td className="td1">Copyright：</td>
               <td><textarea ref="copyright" className="form-control wd6 hg1" defaultValue={blogInfo.copyright}/></td>
             </tr>
             <tr>
               <td className="td1">&nbsp;</td>
               <td>
-                <a href="javascript:void(0)" className="btn" onClick={this.handleSubmit.bind(this, blogInfo._id)}>确定</a>&nbsp;&nbsp;
+                <a href="javascript:void(0)" className="btn" onClick={this.handleSubmit.bind(this, blogInfo._id)}>Save</a>&nbsp;&nbsp;
                 <Alert data={blogInfoProps.editData} loading={blogInfoProps.editing} error={blogInfoProps.editError} validateMsg={this.state.validateMsg} showAlert={this.state.showAlert}/>
               </td>
             </tr>
@@ -67,7 +67,7 @@ export default class BlogInfo extends Component {
         </div>
       )
     } else {
-      return <div className="main"><p>登陆验证失败,请 <Link to={ADMINPATH + 'login'}>登陆</Link></p></div>
+      return <div className="main"><p>Hello,  <Link to={ADMINPATH + 'login'}>Login</Link></p></div>
     }
   }
   handleSubmit(id) {
@@ -76,24 +76,23 @@ export default class BlogInfo extends Component {
         {
           name: 'title',
           rules: ['isRequired'],
-          msgs: ['标题不能为空！']
+          msgs: ['Title is required.']
         }, {
           name: 'keywords',
           rules: ['isRequired'],
-          msgs: ['关键词不能为空！']
+          msgs: ['Keywords are required']
         }, {
           name: 'description',
           rules: ['isRequired'],
-          msgs: ['描述不能为空！']
+          msgs: ['Description is required.']
         }, {
           name: 'copyright',
           rules: ['isRequired'],
-          msgs: ['版权不能为空！']
+          msgs: ['Copyright is required']
         }
       ]),
       props = this.props;
-
-    // 提交
+    
     if (data) {
       if (id) {
         editOver(props.update({params: {id}, data}), this);

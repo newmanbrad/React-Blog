@@ -41,11 +41,11 @@ export default class UserList extends Component {
             <table className="table2">
               <tbody>
               <tr>
-                <th>序号</th>
-                <th>昵称</th>
-                <th>邮箱</th>
-                <th>评论数</th>
-                <th>操作</th>
+                <th>Page</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Comments</th>
+                <th>Delete</th>
               </tr>
               {xData.map((x, i) => {
                 return (
@@ -55,7 +55,7 @@ export default class UserList extends Component {
                     <td>{x.email}</td>
                     <td><Link to={ADMINPATH + 'commentList'} query={{userId: x._id}}>{x.commentCount}</Link></td>
                     <td>
-                      <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, x._id)}>删除</a>
+                      <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, x._id)}>Delete</a>
                     </td>
                   </tr>
                 )

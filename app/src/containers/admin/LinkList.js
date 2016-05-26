@@ -37,16 +37,16 @@ export default class LinkList extends Component {
 
       return (
         <div className="main">
-          <Link to={ADMINPATH + 'link'} className="btn">新增</Link>&nbsp;&nbsp;
+          <Link to={ADMINPATH + 'link'} className="btn">Home Maybe</Link>&nbsp;&nbsp;
           <Alert data={detail.deleteData} loading={detail.deleteing} error={detail.deleteError} showAlert={this.state.showAlert} />
           <div className="table2_wrap">
             <table className="table2">
               <tbody>
               <tr>
-                <th>序号</th>
-                <th>名称</th>
-                <th>链接</th>
-                <th>操作</th>
+                <th>Page</th>
+                <th>Name</th>
+                <th>URL</th>
+                <th>Actions</th>
               </tr>
               {xData.map((x, i) => {
                 return (
@@ -55,8 +55,8 @@ export default class LinkList extends Component {
                     <td>{x.name}</td>
                     <td>{x.url}</td>
                     <td>
-                      <Link to={ADMINPATH + 'link'} query={{id: x._id}}>编辑</Link>&nbsp;&nbsp;
-                      <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, x._id)}>删除</a>
+                      <Link to={ADMINPATH + 'link'} query={{id: x._id}}>Edit</Link>&nbsp;&nbsp;
+                      <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, x._id)}>Delete</a>
                     </td>
                   </tr>
                 )

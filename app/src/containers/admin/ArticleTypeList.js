@@ -24,7 +24,7 @@ function fetchData(getState, dispatch, location) {
 export default class ArticleTypeList extends Component {
   state = {
     showAlert: false
-  }
+  };
   render() {
     let
       props = this.props,
@@ -37,17 +37,17 @@ export default class ArticleTypeList extends Component {
 
       return (
         <div className="main">
-          <Link to={ADMINPATH + 'articleType'} className="btn">新增</Link>&nbsp;&nbsp;
+          <Link to={ADMINPATH + 'articleType'} className="btn">Add Types</Link>&nbsp;&nbsp;
           <Alert data={detail.deleteData} loading={detail.deleteing} error={detail.deleteError} showAlert={this.state.showAlert} />
           <div className="table2_wrap">
             <table className="table2">
               <tbody>
               <tr>
-                <th>序号</th>
-                <th>名称</th>
-                <th>路径</th>
-                <th>是否启用</th>
-                <th>操作</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Path</th>
+                <th>Enabled</th>
+                <th>Actions</th>
               </tr>
               {xData.map((x, i) => {
                 return (
@@ -55,10 +55,10 @@ export default class ArticleTypeList extends Component {
                     <td>{(pageList.current - 1) * pageList.size + i + 1}</td>
                     <td>{x.name}</td>
                     <td>{x.path}</td>
-                    <td>{x.enabled ? '是': '否'}</td>
+                    <td>{x.enabled ? 'Yes': 'No'}</td>
                     <td>
-                      <Link to={ADMINPATH + 'articleType'} query={{id: x._id}}>编辑</Link>&nbsp;&nbsp;
-                      <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, x._id)}>删除</a>
+                      <Link to={ADMINPATH + 'articleType'} query={{id: x._id}}>Edit</Link>&nbsp;&nbsp;
+                      <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, x._id)}>Delete</a>
                     </td>
                   </tr>
                 )

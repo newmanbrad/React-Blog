@@ -57,14 +57,14 @@ export default class Article extends Component {
             <tbody>
             <tr>
               <td className="td1">&nbsp;</td>
-              <td><h2>{article._id ? '编辑' : '新增'}</h2></td>
+              <td><h2>{article._id ? 'Edit Article' : 'Add Article'}</h2></td>
             </tr>
             <tr>
               <td className="td1">Title：</td>
               <td><input type="text" ref="title" className="form-control wd4" defaultValue={article.title} /></td>
             </tr>
             <tr>
-              <td className="Author">作者：</td>
+              <td className="Author">Author：</td>
               <td><input type="text" ref="author" className="form-control" defaultValue={article.author} /></td>
             </tr>
             <tr>
@@ -78,7 +78,7 @@ export default class Article extends Component {
               </td>
             </tr>
             <tr>
-              <td className="td1">标签：</td>
+              <td className="td1">Tags：</td>
               <td>
                 {articleTags.map((v, i) => {
                   return <span key={i}><input ref={'tags' + i} type="checkbox" value={v._id} defaultChecked={article.tags && ~article.tags.indexOf(v._id) ? true : false} /> {v.name} </span>
@@ -86,26 +86,26 @@ export default class Article extends Component {
               </td>
             </tr>
             <tr>
-              <td className="td1">是否启用：</td>
+              <td className="td1">Status：</td>
               <td>
                 <select ref="enabled" defaultValue={article.enabled} className="form-control">
-                  <option value={true}>是</option>
-                  <option value={false}>否</option>
+                  <option value={true}>Enabled</option>
+                  <option value={false}>Disbaled</option>
                 </select>
               </td>
             </tr>
             <tr>
-              <td className="td1">简介：</td>
+              <td className="td1">Intro：</td>
               <td dangerouslySetInnerHTML={{__html: `<script type="text/plain" id="introduction" style="width: 900px;">${article.introduction != null ? article.introduction : ''}</script>`}}></td>
             </tr>
             <tr>
-              <td className="td1">内容：</td>
+              <td className="td1">Content：</td>
               <td dangerouslySetInnerHTML={{__html: `<script type="text/plain" id="content" style="width: 900px;">${article.content != null ? article.content : ''}</script>`}}></td>
             </tr>
             <tr>
               <td className="td1">&nbsp;</td>
               <td>
-                <a href="javascript:void(0)" className="btn" onClick={this.handleSubmit.bind(this, article._id)}>确定</a>&nbsp;&nbsp;
+                <a href="javascript:void(0)" className="btn" onClick={this.handleSubmit.bind(this, article._id)}>Save</a>&nbsp;&nbsp;
                 <Alert data={articleProps.editData} loading={articleProps.editing} error={articleProps.editError} validateMsg={this.state.validateMsg} showAlert={this.state.showAlert} />
               </td>
             </tr>
@@ -123,15 +123,15 @@ export default class Article extends Component {
         {
           name: 'title',
           rules: ['isRequired'],
-          msgs: ['标题不能为空！']
+          msgs: ['Title is required.']
         }, {
           name: 'author',
           rules: ['isRequired'],
-          msgs: ['作者不能为空！']
+          msgs: ['Author is required.']
         },{
           name: 'type',
           rules: ['isRequired'],
-          msgs: ['类别不能为空']
+          msgs: ['Type is required.']
         }, {
           names: 'tags'
         }, {
@@ -140,7 +140,6 @@ export default class Article extends Component {
       ]),
       props = this.props;
 
-    // 提交
     if (data) {
       data.introduction = introEditor.getContent();
       data.content = contentEditor.getContent();

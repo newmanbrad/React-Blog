@@ -36,29 +36,29 @@ export default class ArticleType extends Component {
             <tbody>
             <tr>
               <td className="td1">&nbsp;</td>
-              <td><h2>{xData._id ? '编辑' : '新增'}</h2></td>
+              <td><h2>{xData._id ? 'Article Type' : 'Article Type 2'}</h2></td>
             </tr>
             <tr>
-              <td className="td1">名称：</td>
+              <td className="td1">Name：</td>
               <td><input type="text" ref="name" className="form-control" defaultValue={xData.name} /></td>
             </tr>
             <tr>
-              <td className="td1">路径：</td>
+              <td className="td1">Path：</td>
               <td><input type="text" ref="path" className="form-control" defaultValue={xData.path} /></td>
             </tr>
             <tr>
-              <td className="td1">是否启用：</td>
+              <td className="td1">Enabled：</td>
               <td>
                 <select ref="enabled" defaultValue={xData.enabled} className="form-control">
-                  <option value={true}>是</option>
-                  <option value={false}>否</option>
+                  <option value={true}>Enabled</option>
+                  <option value={false}>Disabled</option>
                 </select>
               </td>
             </tr>
             <tr>
               <td className="td1">&nbsp;</td>
               <td>
-                <a href="javascript:void(0)" className="btn" onClick={this.handleSubmit.bind(this, xData._id)}>确定</a>&nbsp;&nbsp;
+                <a href="javascript:void(0)" className="btn" onClick={this.handleSubmit.bind(this, xData._id)}>Save</a>&nbsp;&nbsp;
                 <Alert data={detail.editData} loading={detail.editing} error={detail.editError} validateMsg={this.state.validateMsg} showAlert={this.state.showAlert} />
               </td>
             </tr>
@@ -76,18 +76,17 @@ export default class ArticleType extends Component {
         {
           name: 'name',
           rules: ['isRequired'],
-          msgs: ['名称不能为空！']
+          msgs: ['Name is required.']
         }, {
           name: 'path',
           rules: ['isRequired'],
-          msgs: ['路径不能为空！']
+          msgs: ['Path is required.']
         },{
             name: 'enabled'
         }
       ]),
       props = this.props;
 
-    // 提交
     if (data) {
       if (id) {
         editOver(props.update({params: {x: 'articleType', id}, data}), this, ADMINPATH + 'articleTypeList');

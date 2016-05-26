@@ -37,16 +37,16 @@ export default class ArticleTagList extends Component {
 
       return (
         <div className="main">
-          <Link to={ADMINPATH + 'articleTag'} className="btn">新增</Link>&nbsp;&nbsp;
+          <Link to={ADMINPATH + 'articleTag'} className="btn">Add Tag</Link>&nbsp;&nbsp;
           <Alert data={detail.deleteData} loading={detail.deleteing} error={detail.deleteError} showAlert={this.state.showAlert} />
           <div className="table2_wrap">
             <table className="table2">
               <tbody>
               <tr>
-                <th>序号</th>
-                <th>名称</th>
-                <th>路径</th>
-                <th>操作</th>
+                <th>ID</th>
+                <th>Tag</th>
+                <th>Path</th>
+                <th>Actions</th>
               </tr>
               {xData.map((x, i) => {
                 return (
@@ -55,8 +55,8 @@ export default class ArticleTagList extends Component {
                     <td>{x.name}</td>
                     <td>{x.path}</td>
                     <td>
-                      <Link to={ADMINPATH + 'articleTag'} query={{id: x._id}}>编辑</Link>&nbsp;&nbsp;
-                      <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, x._id)}>删除</a>
+                      <Link to={ADMINPATH + 'articleTag'} query={{id: x._id}}>Edit</Link>&nbsp;&nbsp;
+                      <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, x._id)}>Delete</a>
                     </td>
                   </tr>
                 )

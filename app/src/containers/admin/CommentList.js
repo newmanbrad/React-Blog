@@ -26,10 +26,9 @@ export default class CommentList extends Component {
     showAlert: false
   }
   render() {
-    let
-      props = this.props,
-      list = props.list,
-      detail = props.detail;
+    let props = this.props,
+        list = props.list,
+        detail = props.detail;
 
     if (list.data && list.data.data) {
       let
@@ -42,11 +41,11 @@ export default class CommentList extends Component {
             <table className="table2">
               <tbody>
               <tr>
-                <th>序号</th>
-                <th>邮箱</th>
-                <th>时间</th>
-                <th>内容</th>
-                <th>操作</th>
+                <th>Page</th>
+                <th>Email</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Actions</th>
               </tr>
               {xData.map((x, i) => {
                 return (
@@ -56,8 +55,8 @@ export default class CommentList extends Component {
                     <td>{x.time}</td>
                     <td>{x.content.slice(0, 40) + (x.content.length > 40 ? '...' : '')}</td>
                     <td>
-                      <Link to='/article' query={{id: x.article.id}}>回复</Link>&nbsp;&nbsp;
-                      <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, x._id)}>删除</a>
+                      <Link to='/article' query={{id: x.article.id}}>Edit</Link>&nbsp;&nbsp;
+                      <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, x._id)}>Delete</a>
                     </td>
                   </tr>
                 )

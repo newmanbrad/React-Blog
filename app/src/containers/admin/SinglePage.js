@@ -58,24 +58,24 @@ export default class singlePage extends Component {
             <tbody>
             <tr>
               <td className="td1">&nbsp;</td>
-              <td><h2>{xData._id ? '编辑' : '新增'}</h2></td>
+              <td><h2>{xData._id ? 'Sure' : 'Sure'}</h2></td>
             </tr>
             <tr>
-              <td className="td1">名称：</td>
+              <td className="td1">Title：</td>
               <td><input type="text" ref="title" className="form-control" defaultValue={xData.title} /></td>
             </tr>
             <tr>
-              <td className="td1">路径：</td>
+              <td className="td1">Path：</td>
               <td><input type="text" ref="path" className="form-control wd4" defaultValue={xData.path} /></td>
             </tr>
             <tr>
-              <td className="td1">内容：</td>
+              <td className="td1">Content：</td>
               <td dangerouslySetInnerHTML={{__html: `<script type="text/plain" id="content" style="width: 900px;">${xData.content != null ? xData.content : ''}</script>`}}></td>
             </tr>
             <tr>
               <td className="td1">&nbsp;</td>
               <td>
-                <a href="javascript:void(0)" className="btn" onClick={this.handleSubmit.bind(this, xData._id)}>确定</a>&nbsp;&nbsp;
+                <a href="javascript:void(0)" className="btn" onClick={this.handleSubmit.bind(this, xData._id)}>Save</a>&nbsp;&nbsp;
                 <Alert data={detail.editData} loading={detail.editing} error={detail.editError} validateMsg={this.state.validateMsg} showAlert={this.state.showAlert} />
               </td>
             </tr>
@@ -93,16 +93,15 @@ export default class singlePage extends Component {
         {
           name: 'title',
           rules: ['isRequired'],
-          msgs: ['名称不能为空！']
+          msgs: ['A title is required.']
         }, {
           name: 'path',
           rules: ['isRequired'],
-          msgs: ['路径不能为空！']
+          msgs: ['A path is required！']
         }
       ]),
       props = this.props;
-
-    // 提交
+    
     if (data) {
       data.content = contentEditor.getContent();
       if (id) {

@@ -36,16 +36,16 @@ export default class SinglePageList extends Component {
 
       return (
         <div className="main">
-          <Link to={ADMINPATH + 'singlePage'} className="btn">新增</Link>&nbsp;&nbsp;
+          <Link to={ADMINPATH + 'singlePage'} className="btn">Home</Link>&nbsp;&nbsp;
           <Alert data={detail.deleteData} loading={detail.deleteing} error={detail.deleteError} showAlert={this.state.showAlert} />
           <div className="table2_wrap">
             <table className="table2">
               <tbody>
               <tr>
-                <th>序号</th>
-                <th>名称</th>
-                <th>路径</th>
-                <th>操作</th>
+                <th>Page</th>
+                <th>Title</th>
+                <th>Path</th>
+                <th>Actions</th>
               </tr>
               {xData.map((x, i) => {
                 return (
@@ -54,8 +54,8 @@ export default class SinglePageList extends Component {
                     <td>{x.title}</td>
                     <td>{x.path}</td>
                     <td>
-                      <Link to={ADMINPATH + 'singlePage'} query={{id: x._id}}>编辑</Link>&nbsp;&nbsp;
-                      <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, x._id)}>删除</a>
+                      <Link to={ADMINPATH + 'singlePage'} query={{id: x._id}}>Edit</Link>&nbsp;&nbsp;
+                      <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, x._id)}>Delete</a>
                     </td>
                   </tr>
                 )
