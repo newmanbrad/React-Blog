@@ -1,19 +1,17 @@
+/**
+ *  Article end points.
+ */
+
 module.exports = function (app, co) {
-  app // 文章详情CRUD
+  app
     .route('/admin/article')
     .get(function (req, res) {
       co(function *() {
-        var
-          // 文章id
-          id = req.query.id,
-          // 文章所有type
-          articleTypes = yield M.articleType.find({enabled: true}),
-          // 文章内容
-          article = id ? yield M.article.findOne({_id: id}) : {},
-          // 标签
-          articleTags = yield M.articleTag.find();
+        var id = req.query.id,
+            articleTypes = yield M.articleType.find({enabled: true}),
+            article = id ? yield M.article.findOne({_id: id}) : {},
+            articleTags = yield M.articleTag.find();
 
-        // 模板渲染
         res.json({
           status: 'success',
           data: {
@@ -29,10 +27,10 @@ module.exports = function (app, co) {
 
         res.json((yield M.article.remove({_id: req.query.id})) ?
         { status: 'success',
-          msg: '删除成功'
+          msg: 'article deleted'
         } : {
           status: 'fail',
-          msg :'删除失败'
+          msg :'article removal failed'
         });
       }).catch(F.handleErr.bind(null, res))
     })
@@ -43,10 +41,10 @@ module.exports = function (app, co) {
 
         res.json((yield M.article.findOneAndUpdate({_id: req.query.id}, body)) ?
           { status: 'success',
-            msg: '更新成功'
+            msg: 'article updated'
           } : {
             status: 'fail',
-            msg :'更新失败'
+            msg :'article update failed'
           });
       }).catch(F.handleErr.bind(null, res))
     })
@@ -57,10 +55,10 @@ module.exports = function (app, co) {
 
         res.json((yield M.article.create(body)) ?
           { status: 'success',
-            msg: '新增成功'
+            msg: 'article created'
           } : {
             status: 'fail',
-            msg :'新增失败'
+            msg :'article creation failed'
           });
 
       }).catch(F.handleErr.bind(null, res))

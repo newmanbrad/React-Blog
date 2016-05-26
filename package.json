@@ -34,7 +34,7 @@
     "scp.dev": "bin/scp.dev.sh",
     "data.dev": "npm run scp.dev && npm run tar.dev && npm run mongorestore.dev",
     "data.prod": "npm run mongodump.prod && npm run tar.prod",
-    "lint": "eslint ./fe ./be"
+    "lint": "eslint ./fe ./api"
   },
   "dependencies": {
     "babel": "^5.8.29",

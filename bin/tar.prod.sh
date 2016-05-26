@@ -1,3 +1,3 @@
 #!/bin/sh
-cd /root/website/blog/be/data
+cd /root/website/React-Blog/be/data
 tar -zcvf blog.tar.gz blog
