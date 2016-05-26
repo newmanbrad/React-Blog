@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import { routerStateReducer } from 'redux-router';
-// 前台
+// blog
 import layout from './layout';
 import articleList from './articleList';
 import article from './article';
 import singlePage from './singlePage';
 import comment from './comment';
-// 后台
+// admin
 import adminBlogInfo from './admin/blogInfo';
 import adminAuth from './admin/auth';
 import adminArticleList from './admin/articleList';
@@ -27,15 +27,14 @@ import adminLink from './admin/link';
 import adminSinglePage from './admin/singlePage';
 
 export default combineReducers({
-  // 路由
   router: routerStateReducer,
-  // 前台
+  // blog
   layout,
   articleList,
   article,
   singlePage,
   comment,
-  // 后台
+  // admin
   adminBlogInfo,
   adminAuth,
   adminArticleList,

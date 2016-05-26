@@ -1,4 +1,4 @@
-import createCURD from '../../../helpers/createCURD';
+import createCRUD from '../../../helpers/createCRUD';
 
 const LOGIN = 'admin/auth/LOGIN';
 const LOGIN_SUCCESS = 'admin/auth/LOGIN_SUCCESS';
@@ -6,7 +6,7 @@ const LOGIN_FAIL = 'admin/auth/LOGIN_FAIL';
 const LOGOUT = 'admin/auth/LOGOUT';
 const LOGOUT_SUCCESS = 'admin/auth/LOGOUT_SUCCESS';
 const LOGOUT_FAIL = 'admin/auth/LOGOUT_FAIL';
-const { methods: { load }, createReducer } = createCURD('admin/auth', 'R');
+const { methods: { load }, createReducer } = createCRUD('admin/auth', 'R');
 
 export default function reducer(state = { loaded: false }, action = {}) {
   let stateCURB = createReducer(state, action);

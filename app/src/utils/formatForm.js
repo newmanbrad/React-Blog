@@ -1,15 +1,13 @@
 import rules from './rules';
 
 export default (parent, inputs) => {
-  let
-    refs = parent.refs,
-    data = {};
+  let refs = parent.refs,
+      data = {};
 
   for (let input of inputs) {
     if (data) {
-      let
-        name = input.name,
-        names = input.names;
+      let name = input.name,
+          names = input.names;
 
       if (names) {
         let i = 0, ref;
@@ -24,12 +22,12 @@ export default (parent, inputs) => {
 
       if (name) {
         data[name] = refs[name].value;
-        if (input.rules) { // 需要校验
+        if (input.rules) { 
           for (let rule of input.rules.entries()) {
             if (!rules[rule[1]](data[name])) {
               parent.setState({
                 validateMsg: input.msgs[rule[0]],
-                showAlert: true,
+                showAlert: true
               });
               data = null;
               break;

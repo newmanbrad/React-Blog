@@ -1,7 +1,7 @@
-import createCURD from '../../helpers/createCURD';
+import createCRUD from '../../helpers/createCRUD';
 
 const INSERT_COMMENT = 'article/INSERT_COMMENT';
-const { methods: { load }, createReducer } = createCURD('article', 'R');
+const { methods: { load }, createReducer } = createCRUD('article', 'R');
 
 export default function reducer(state = {}, action = {}) {
   let stateCURB = createReducer(state, action);

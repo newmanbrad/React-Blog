@@ -3,6 +3,7 @@
  */
 import 'babel/polyfill';
 import React from 'react';
+//noinspection JSUnresolvedVariable
 import { render } from 'react-dom';
 import createHistory from 'history/lib/createBrowserHistory';
 import configureStore from './redux/configureStore';

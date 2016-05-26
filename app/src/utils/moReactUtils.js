@@ -1,7 +1,8 @@
 let m = function(elem) {
   return  new m.prototype.init(elem);
-}
-// dom 方法
+};
+
+// dom
 m.prototype = {
   init(elem) {
     this.elem = elem;
@@ -26,11 +27,10 @@ m.prototype = {
     }
   },
   getByClass(className) {
-    let
-      children = this.elem.getElementsByTagName('*'),
-      ret = [],
-      reg = new RegExp('\\b' + className + '\\b', 'i'),
-      i = 0;
+    let children = this.elem.getElementsByTagName('*'),
+        ret = [],
+        reg = new RegExp('\\b' + className + '\\b', 'i'),
+        i = 0;
 
     for(; i < children.length; i++) {
       reg.test(children[i].className) && ret.push(children[i]);
@@ -42,11 +42,9 @@ m.prototype = {
 
 m.prototype.init.prototype = m.prototype;
 
-// 核心方法
 m.createScript = function(url, callback) {
-  var
-    head = document.getElementsByTagName('head')[0],
-    script = document.createElement('script');
+  let head = document.getElementsByTagName('head')[0],
+      script = document.createElement('script');
 
   script.type = 'text/javascript';
   script.onload = script.onreadystatechange = function() {

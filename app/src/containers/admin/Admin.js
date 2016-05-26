@@ -36,7 +36,7 @@ export default class Admin extends Component {
             <tbody>
             <tr>
               <td className="td1">&nbsp;</td>
-              <td><h2>{xData._id ? '编辑' : '新增'}</h2></td>
+              <td><h2>{xData._id ? 'User' : 'User'}</h2></td>
             </tr>
             <tr>
               <td className="td1">Name：</td>

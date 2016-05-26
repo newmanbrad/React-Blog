@@ -1,6 +1,6 @@
-import createCURD from '../../../helpers/createCURD';
+import createCRUD from '../../../helpers/createCRUD';
 
-const { methods: { create, update, load }, createReducer } = createCURD('admin/blogInfo', 'CUR');
+const { methods: { create, update, load }, createReducer } = createCRUD('admin/blogInfo', 'CUR');
 
 export default function reducer(state = { loaded: false }, action = {}) {
   return createReducer(state, action) || state;

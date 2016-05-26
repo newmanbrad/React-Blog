@@ -1,4 +1,4 @@
-function createMenthod(method, types, prefix) {
+function createMethod(method, types, prefix) {
   return function({ params, data } = {}) {
     return {
       types: types,
@@ -7,7 +7,7 @@ function createMenthod(method, types, prefix) {
   }
 }
 
-function createMenthodsAndConstants(prefix, actions, action, constants, methods, name, pageName) {
+function createMethodsAndConstants(prefix, actions, action, constants, methods, name, pageName) {
   pageName = pageName ? '-' + pageName : '';
 
   if (~actions.indexOf(action)) {
@@ -24,30 +24,30 @@ function createMenthodsAndConstants(prefix, actions, action, constants, methods,
     });
     // 方法
     if (action === 'C') {
-      methods.create = createMenthod('post', types, prefix);
+      methods.create = createMethod('post', types, prefix);
     } else if (action === 'U') {
-      methods.update = createMenthod('put', types, prefix);
+      methods.update = createMethod('put', types, prefix);
     } else if (action === 'R') {
-      methods.load = createMenthod('get', types, prefix);
+      methods.load = createMethod('get', types, prefix);
     } else if (action === 'D') {
-      methods.del = createMenthod('del', types, prefix);
+      methods.del = createMethod('del', types, prefix);
     }
   }
 }
 
-export default function createCURD(prefix, actions, pageName) {
+export default function createCRUD(prefix, actions, pageName) {
   const constants = {};
   const methods = {};
   const actionsMap = {
     'C': 'CREATE',
-    'U': 'UPDATE',
     'R': 'LOAD',
+    'U': 'UPDATE',
     'D': 'DELETE'
-  }
+  };
 
   actions.toUpperCase().split('').forEach((action) => {
-    createMenthodsAndConstants(prefix, actions, action, constants, methods, actionsMap[action], pageName);
-  })
+    createMethodsAndConstants(prefix, actions, action, constants, methods, actionsMap[action], pageName);
+  });
 
   const createReducer = function(state, action) {
     switch (action.type) {

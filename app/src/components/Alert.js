@@ -8,11 +8,11 @@ export default class Alert extends Component {
       if (validateMsg) {
         return <span className="alert alert-warning">{validateMsg}</span>
       } else if (loading) {
-        return <span className="alert alert-info">'提交中...</span>
+        return <span className="alert alert-info">'Loading...</span>
       }  else if (data && data.status === 'success') {
         return <span className="alert alert-success">{data.msg}</span>
       } else if(error || data && data.status !== 'success') {
-        return <span className="alert alert-danger">{error ? '网络错误，请稍后重试...' : data.msg}</span>
+        return <span className="alert alert-danger">{error ? 'An Error Has Occurred...' : data.msg}</span>
       }
     }
 

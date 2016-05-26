@@ -3,18 +3,16 @@ import { Link } from 'react-router';
 
 export default class Pagelist extends Component {
   render() {
-    let
-      { rowCount, numRange, current, query, pageCount, path } = this.props,
-      pagelistComponent = [];
+    let { rowCount, numRange, current, query, pageCount, path } = this.props,
+        pagelistComponent = [];
 
     if (rowCount > 0) {
-      let
-        pagePrev = current - 1,
-        pageNext = current + 1,
-        pageNumPrev = current - numRange,
-        pageNumNext = pageNext,
-        i = 0,
-        j = 0;
+      let pagePrev = current - 1,
+          pageNext = current + 1,
+          pageNumPrev = current - numRange,
+          pageNumNext = pageNext,
+          i = 0,
+          j = 0;
 
       if (pagePrev > 0) {
         pagelistComponent.push(
