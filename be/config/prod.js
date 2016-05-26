@@ -1,3 +1,0 @@
-/*** 
- * production config goes here 
- ***/
