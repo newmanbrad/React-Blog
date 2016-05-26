@@ -36,7 +36,7 @@ export default class AdminList extends Component {
 
       return (
         <div className="main">
-          <Link to={ADMINPATH + 'admin'} className="btn">Admin</Link>&nbsp;&nbsp;
+          <Link to={ADMINPATH + 'admin'} className="btn">Add Admin</Link>&nbsp;&nbsp;
           <Alert data={detail.deleteData} loading={detail.deleteing} error={detail.deleteError} showAlert={this.state.showAlert} />
           <div className="table2_wrap">
             <table className="table2">
@@ -56,8 +56,8 @@ export default class AdminList extends Component {
                     <td>{x.email}</td>
                     <td>******</td>
                     <td>
-                      <Link to={ADMINPATH + 'admin'} query={{id: x._id}}>Admin</Link>&nbsp;&nbsp;
-                      <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, x._id)}>Edit</a>
+                      <Link to={ADMINPATH + 'admin'} query={{id: x._id}}>Edit</Link>&nbsp;&nbsp;
+                      <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, x._id)}>Delete</a>
                     </td>
                   </tr>
                 )

@@ -26,7 +26,7 @@ export default class Layout extends Component {
         {blogInfo} = blogInfoProps.data.data;
       return (
         <div className="admin">
-          <DocumentMeta title='后台管理'/>
+          <DocumentMeta title='Blog Administration'/>
           <header className="header">
             <div className="inner">
               <h1><Link to={String(ADMINPATH)} className="logo">{blogInfo.title} Home</Link></h1>
@@ -52,7 +52,7 @@ export default class Layout extends Component {
       return (
         <div className="welcome">
           <DocumentMeta title='500 Error'/>
-          <h1>网络错误，请稍后重试...</h1>
+          <h1>An Error Has Occurred...</h1>
         </div>
       )
     }

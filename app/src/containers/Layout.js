@@ -47,9 +47,9 @@ export default class Layout extends Component {
     let layout = this.props.layout;
 
     if (layout.data && layout.data.data) {
-      let
-        {showNav, showHeaderDown} = this.state,
-        {articleTypes, blogInfo, articleTags, links} = layout.data.data;
+      let {showNav, showHeaderDown} = this.state,
+          {articleTypes, blogInfo, articleTags, links} = layout.data.data;
+      
       return (
         <div className="index">
           <header className={classNames('header', {header_down: showHeaderDown})}>
@@ -99,7 +99,7 @@ export default class Layout extends Component {
       return (
         <div className="welcome">
           <DocumentMeta title='500 Error'/>
-          <h1>Welcome</h1>
+          <h1>An Error Has Occurred...</h1>
         </div>
       )
     }

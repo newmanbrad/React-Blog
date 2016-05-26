@@ -31,7 +31,7 @@ export default class singlePage extends Component {
   componentDidMount() {
     let
       detail = this.props.detail;
-    // 引入umeditor
+
     if (detail.data && detail.data.data && detail.data.data.useEditor) {
       m.createStyle('/static/scripts/umeditor/themes/default/css/umeditor.css');
       m.createScript('/static/scripts/umeditor/third-party/jquery.min.js', function() {
@@ -101,7 +101,7 @@ export default class singlePage extends Component {
         }
       ]),
       props = this.props;
-    
+
     if (data) {
       data.content = contentEditor.getContent();
       if (id) {

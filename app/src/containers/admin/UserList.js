@@ -1,8 +1,8 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router';
-import { load } from '../../redux/modules/admin/userList';
-import { del } from '../../redux/modules/admin/user';
+import React, {Component, PropTypes} from 'react';
+import {connect} from 'react-redux';
+import {Link} from 'react-router';
+import {load} from '../../redux/modules/admin/userList';
+import {del} from '../../redux/modules/admin/user';
 import connectData from '../../helpers/connectData';
 import Alert from '../../components/Alert';
 import PageList from '../../components/PageList';
@@ -18,34 +18,34 @@ function fetchData(getState, dispatch, location) {
     list: state.adminUserList,
     detail: state.adminUser
   }),
-  { del, load }
+  {del, load}
 )
 export default class UserList extends Component {
   state = {
     showAlert: false
   }
+
   render() {
-    let
-      props = this.props,
+    let props = this.props,
       list = props.list,
       detail = props.detail;
 
     if (list.data && list.data.data) {
-      let
-        {xData, pageList} = list.data.data;
+      let {xData, pageList} = list.data.data;
 
       return (
         <div className="main">
-          <Alert data={detail.deleteData} loading={detail.deleteing} error={detail.deleteError} showAlert={this.state.showAlert} />
+          <Alert data={detail.deleteData} loading={detail.deleteing} error={detail.deleteError}
+                 showAlert={this.state.showAlert}/>
           <div className="table2_wrap">
             <table className="table2">
               <tbody>
               <tr>
-                <th>Page</th>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Comments</th>
-                <th>Delete</th>
+                <th>Actions</th>
               </tr>
               {xData.map((x, i) => {
                 return (
@@ -63,13 +63,14 @@ export default class UserList extends Component {
               </tbody>
             </table>
           </div>
-          <PageList {...pageList} path={ADMINPATH + 'userList'} />
+          <PageList {...pageList} path={ADMINPATH + 'userList'}/>
         </div>
       )
     } else {
       return <State {...list} />
     }
   }
+
   handleDelete(id) {
     let props = this.props;
 

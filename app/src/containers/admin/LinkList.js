@@ -37,13 +37,13 @@ export default class LinkList extends Component {
 
       return (
         <div className="main">
-          <Link to={ADMINPATH + 'link'} className="btn">Home Maybe</Link>&nbsp;&nbsp;
+          <Link to={ADMINPATH + 'link'} className="btn">Add Link</Link>&nbsp;&nbsp;
           <Alert data={detail.deleteData} loading={detail.deleteing} error={detail.deleteError} showAlert={this.state.showAlert} />
           <div className="table2_wrap">
             <table className="table2">
               <tbody>
               <tr>
-                <th>Page</th>
+                <th>ID</th>
                 <th>Name</th>
                 <th>URL</th>
                 <th>Actions</th>

@@ -52,9 +52,9 @@ export default class Pagelist extends Component {
           <span key="pageend" className="pageend">»</span>
         );
       }
-      pagelistComponent.push(<span key="total" className="total">{`${rowCount}条/共${pageCount}页`}</span>);
+      pagelistComponent.push(<span key="total" className="total">{`${rowCount} Record(s) of Page ${pageCount}`}</span>);
     } else {
-      pagelistComponent.push(<em key="none">无记录</em>);
+      pagelistComponent.push(<em key="none">0 Records Returned</em>);
     }
 
     return (

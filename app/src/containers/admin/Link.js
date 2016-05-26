@@ -36,10 +36,10 @@ export default class Link extends Component {
             <tbody>
             <tr>
               <td className="td1">&nbsp;</td>
-              <td><h2>{xData._id ? 'sure' : 'sure'}</h2></td>
+              <td><h2>{xData._id ? 'Edit Link' : 'Add Link'}</h2></td>
             </tr>
             <tr>
-              <td className="td1">Name：</td>
+              <td className="td1">Link：</td>
               <td><input type="text" ref="name" className="form-control" defaultValue={xData.name} /></td>
             </tr>
             <tr>
@@ -67,7 +67,7 @@ export default class Link extends Component {
         {
           name: 'name',
           rules: ['isRequired'],
-          msgs: ['Name is required.']
+          msgs: ['Link is required.']
         }, {
           name: 'url',
           rules: ['isRequired', 'isUrl'],
@@ -75,7 +75,7 @@ export default class Link extends Component {
         }
       ]),
       props = this.props;
-    
+
     if (data) {
       if (id) {
         editOver(props.update({params: {x: 'link', id}, data}), this, ADMINPATH + 'linkList');

@@ -41,7 +41,7 @@ export default class CommentList extends Component {
             <table className="table2">
               <tbody>
               <tr>
-                <th>Page</th>
+                <th>ID</th>
                 <th>Email</th>
                 <th>Created</th>
                 <th>Updated</th>

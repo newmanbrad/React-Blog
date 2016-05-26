@@ -85,21 +85,21 @@ export default class Article extends Component {
             <table>
               <tbody>
               <tr>
-                <td>昵称：</td>
+                <td>Name：</td>
                 <td><input ref="name" type="text" className="form-control" defaultValue={commenter.name} /></td>
               </tr>
               <tr>
-                <td>邮箱：</td>
+                <td>Email：</td>
                 <td><input ref="email" type="text" className="form-control" defaultValue={commenter.email} /></td>
               </tr>
               <tr>
-                <td>内容：</td>
+                <td>Content：</td>
                 <td><textarea ref="content" className="form-control"></textarea></td>
               </tr>
               <tr>
                 <td>&nbsp;</td>
                 <td>
-                  <a href="javascript:void(0)" onClick={this.handleSubmit.bind(this, {id: article._id, typePath: article.type.path})} className="btn">发表评论</a>&nbsp;&nbsp;
+                  <a href="javascript:void(0)" onClick={this.handleSubmit.bind(this, {id: article._id, typePath: article.type.path})} className="btn">Edit</a>&nbsp;&nbsp;
                   <Alert data={comment.editData} loading={comment.editing} error={comment.editError} validateMsg={this.state.validateMsg} showAlert={this.state.showAlert} />
                 </td>
               </tr>
@@ -118,20 +118,19 @@ export default class Article extends Component {
         {
           name: 'name',
           rules: ['isRequired'],
-          msgs: ['昵称不能为空！']
+          msgs: ['Name is required']
         }, {
           name: 'email',
           rules: ['isRequired', 'isEmail'],
-          msgs: ['邮箱不能为空！', '邮箱格式不正确！']
+          msgs: ['Email is required.', 'Must be a vailid Email']
         }, {
           name: 'content',
           rules: ['isRequired'],
-          msgs: ['内容不能为空！']
+          msgs: ['Content is required.']
         }
       ]),
       props = this.props;
-
-    // 提交
+    
     if (data) {
       data = {...data, article};
       props.createComment({ data }).then((data) => {
