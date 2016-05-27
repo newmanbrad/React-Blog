@@ -1,31 +1,18 @@
-// 变量
-// ------------
-
-// 5种颜色
-
 $primary: #428bca;
 $success: #5cb85c;
 $warning: #f0ad4e;
 $danger: #d9534f;
 $info: #5bc0de;
 
-// 屏幕尺寸
-
 $screen-xs: 480px;
 $screen-sm: 768px;
 $screen-md: 992px;
 $screen-lg: 1200px;
 
-// 链接颜色
-
 $link-color: $primary;
 $link-hover-color: darken($link-color, 15%);
 
-// 字体
-$font-family: "微软雅黑", "Microsoft YaHei", "宋体", SimSun, Tahoma, Arial, Helvetica, sans-serif;
-
-// 混入
-// ------------
+$font-family: Tahoma, Arial, Helvetica, sans-serif;
 
 // box-shadows
 
