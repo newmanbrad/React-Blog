@@ -5,9 +5,11 @@ import { Link } from 'react-router';
 import { pushState } from 'redux-router';
 import { isLoaded, load } from '../redux/modules/layout';
 import connectData from '../helpers/connectData';
-import classNames from 'classnames';
 import m from '../utils/moReactUtils';
 import './layout.scss';
+
+// components
+import Header from '../components/layout/Header';
 
 function fetchData(getState, dispatch) {
   if (!isLoaded(getState())) {
@@ -26,7 +28,7 @@ export default class Layout extends Component {
   state = {
     showNav: false,
     showHeaderDown: false
-  }
+  };
   componentDidMount() {
     let
       colors = this.refs.colors.childNodes,
@@ -49,23 +51,10 @@ export default class Layout extends Component {
     if (layout.data && layout.data.data) {
       let {showNav, showHeaderDown} = this.state,
           {articleTypes, blogInfo, articleTags, links} = layout.data.data;
-      
+
       return (
         <div className="index">
-          <header className={classNames('header', {header_down: showHeaderDown})}>
-            <div className="inner">
-              <h1><Link to="/" className="logo">{blogInfo.title}</Link></h1>
-              <div className="icon-menu" onClick={this.handleToggleNav}></div>
-              <nav className={classNames({active: showNav})}>
-                <Link to='/'>Home</Link>
-                {articleTypes.map((v, i) => {
-                  return <Link key={i} to='/' query={{typePath: v.path}}>{v.name}</Link>
-                })}
-                <Link to='/singlePage' query={{path: 'api'}}>API</Link>
-                <Link to='/singlePage' query={{path: 'about'}}>About</Link>
-              </nav>
-            </div>
-          </header>
+          <Header data={layout}/>
           <div className="main">
             {this.props.children}
             <aside className="sidebar">

@@ -47,7 +47,7 @@ $font-family: "微软雅黑", "Microsoft YaHei", "宋体", SimSun, Tahoma, Arial
 // reset
 // ------------
 
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, input, select, textarea label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, menu, nav, section, time, mark, audio, video {
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, input, select, textarea label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, hgroup, menu, nav, section, time, mark, audio, video {
   margin: 0;
   padding: 0;
 }
@@ -244,60 +244,8 @@ select.form-control {
 // common
 // ------------
 
-.header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 60px;
-  line-height: 60px;
-  border-bottom: 2px solid $primary;
-  background: #fff;
-  z-index: 1000;
-  .inner {
-    margin: 0 auto;
-    max-width: 1200px;
-  }
-  nav {
-    float: right;
-    a {
-      display: inline-block;
-      font-size: 16px;
-      height: 60px;
-      padding: 0 20px;
-      color: $primary;
-      border-bottom: 2px solid transparent;
-      &:hover,
-      &.active {
-        color: $danger;
-        text-decoration: none;
-        border-bottom-color: $danger;
-      }
-    }
-  }
-}
 
-.header_down {
-  box-shadow: 0 0 10px #ccc;
-}
 
-a.logo {
-  float: left;
-  display: block;
-  width: 220px;
-  height: 60px;
-  color: #fff;
-  background: $primary;
-  text-align: center;
-  font-size: 36px;
-  &:hover {
-    color: #fff;
-    text-decoration: none;
-  }
-}
-
-.icon-menu {
-  display: none;
-}
 
 .main {
   max-width: 1200px;
