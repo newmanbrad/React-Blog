@@ -2,6 +2,9 @@
 
 Full Blog Engine and Admin built using React, Redux, Express and Mongo.
 
+Requires Mongo to be up and running on port:27017
+Configure under /lib/config/..
+
 
 Instructions:
 
