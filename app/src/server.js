@@ -24,7 +24,9 @@ const app = new express();
 const resourceDir = path.join(__dirname, '../../resource');
 
 app.use(compression());
-app.use(favicon(path.join(resourceDir, 'static/images/favicon.ico')));
+
+// favicon insertion goes here.
+//app.use(favicon(path.join(resourceDir, 'static/images/favicon.ico')));
 app.use(express.static(resourceDir, {maxAge: '365d'}));
 
 const proxy = httpProxy.createProxyServer({
