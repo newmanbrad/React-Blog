@@ -29,7 +29,7 @@ export default class Layout extends Component {
           <DocumentMeta title='Blog Administration'/>
           <header className="header">
             <div className="inner">
-              <h1><Link to={String(ADMINPATH)} className="logo">{blogInfo.title} Home</Link></h1>
+              <h1><Link to={String(ADMINPATH)} className="logo">{blogInfo.title} Admin</Link></h1>
               <div className="icon-menu"></div>
               <nav id="nav">
                 <Link to={ADMINPATH + 'blogInfo'}>Site Info</Link>

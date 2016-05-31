@@ -21,7 +21,7 @@ export default class Header extends Component {
           {articleTypes, blogInfo, articleTags, links} = layout.data.data;
 
       return (
-
+        
         <header>
           <Navbar inverse className={classNames('header', {header_down: showHeaderDown})}>
             <Navbar.Header>
