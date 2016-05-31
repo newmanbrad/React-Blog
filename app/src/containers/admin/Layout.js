@@ -4,7 +4,6 @@ import DocumentMeta from 'react-document-meta';
 import { Link } from 'react-router';
 import { isLoaded, load } from '../../redux/modules/admin/blogInfo';
 import connectData from '../../helpers/connectData';
-import classNames from 'classnames';
 import '../layout.scss';
 
 // Bootstrap components
