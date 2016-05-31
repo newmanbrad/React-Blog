@@ -7,6 +7,9 @@ import connectData from '../../helpers/connectData';
 import classNames from 'classnames';
 import '../layout.scss';
 
+// Bootstrap components
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+
 function fetchData(getState, dispatch) {
   if (!isLoaded(getState())) {
     return dispatch(load());
@@ -27,23 +30,31 @@ export default class Layout extends Component {
       return (
         <div className="admin">
           <DocumentMeta title='Blog Administration'/>
-          <header className="header">
-            <div className="inner">
-              <h1><Link to={String(ADMINPATH)} className="logo">{blogInfo.title} Admin</Link></h1>
-              <div className="icon-menu"></div>
-              <nav id="nav">
-                <Link to={ADMINPATH + 'blogInfo'}>Site Info</Link>
-                <Link to={ADMINPATH + 'articleList'}>Posts</Link>
-                <Link to={ADMINPATH + 'articleTypeList'}>Types</Link>
-                <Link to={ADMINPATH + 'articleTagList'}>Tags</Link>
-                <Link to={ADMINPATH + 'commentList'}>Comments</Link>
-                <Link to={ADMINPATH + 'singlePageList'}>Pages</Link>
-                <Link to={ADMINPATH + 'userList'}>Users</Link>
-                <Link to={ADMINPATH + 'adminList'}>Admins</Link>
-                <Link to={ADMINPATH + 'linkList'}>Links</Link>
-              </nav>
-            </div>
+
+          <header>
+            <Navbar inverse>
+              <Navbar.Header>
+                <Navbar.Brand>
+                  <Link to="/" className="logo">{blogInfo.title} Admin</Link>
+                </Navbar.Brand>
+                <Navbar.Toggle />
+              </Navbar.Header>
+              <Navbar.Collapse>
+                <Nav>
+                  <NavItem><Link to={ADMINPATH + 'blogInfo'}>Site Info</Link></NavItem>
+                  <NavItem><Link to={ADMINPATH + 'articleList'}>Posts</Link></NavItem>
+                  <NavItem><Link to={ADMINPATH + 'articleTypeList'}>Types</Link></NavItem>
+                  <NavItem><Link to={ADMINPATH + 'articleTagList'}>Tags</Link></NavItem>
+                  <NavItem><Link to={ADMINPATH + 'commentList'}>Comments</Link></NavItem>
+                  <NavItem><Link to={ADMINPATH + 'singlePageList'}>Pages</Link></NavItem>
+                  <NavItem><Link to={ADMINPATH + 'userList'}>Users</Link></NavItem>
+                  <NavItem><Link to={ADMINPATH + 'adminList'}>Admins</Link></NavItem>
+                  <NavItem><Link to={ADMINPATH + 'linkList'}>Links</Link></NavItem>
+                </Nav>
+              </Navbar.Collapse>
+            </Navbar>
           </header>
+
           {this.props.children}
           <footer className="footer" dangerouslySetInnerHTML={{__html: blogInfo.copyright}}></footer>
         </div>
