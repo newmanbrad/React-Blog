@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import connectData from '../../helpers/connectData';
 import Alert from '../../components/Alert';
 import formatForm from '../../utils/formatForm';
-import { editOver } from '../../utils/actionOver';
+import {editOver} from '../../utils/actionOver';
 import * as articleActions from '../../redux/modules/admin/article';
 import State from './State';
-import { pushState } from 'redux-router';
+import {pushState} from 'redux-router';
 import RichTextEditor from '../../components/RichTextEditor';
 
 // Bootstrap components
-import { PageHeader, Button } from 'react-bootstrap';
+import {PageHeader, Button} from 'react-bootstrap';
 
 let contentEditor, introEditor;
 
@@ -23,13 +23,14 @@ function fetchData(getState, dispatch, location) {
   state => ({
     article: state.adminArticle
   }),
-  { ...articleActions, pushState }
+  {...articleActions, pushState}
 )
 export default class Article extends Component {
   state = {
     validateMsg: null,
     showAlert: false
   };
+
   render() {
     let
       articleProps = this.props.article;
@@ -44,19 +45,19 @@ export default class Article extends Component {
           <form>
             <div className="form-group">
               <label className="control-label">Title</label>
-              <input type="text" ref="title" className="form-control" defaultValue={article.title} />
+              <input type="text" ref="title" className="form-control" defaultValue={article.title}/>
             </div>
 
             <div className="form-group">
               <label className="control-label">Author</label>
-              <input type="text" ref="author" className="form-control" defaultValue={article.author} />
+              <input type="text" ref="author" className="form-control" defaultValue={article.author}/>
             </div>
 
             <div className="form-group">
               <label className="control-label">Type</label>
               <select ref="type" defaultValue={String(article.type)} className="form-control">
                 {articleTypes.map((v, i) => {
-                  return <option key={i} defaultValue={v._id}>{v.name}</option>
+                  return <option key={i} value={v._id}>{v.name}</option>
                 })}
               </select>
             </div>
@@ -64,32 +65,35 @@ export default class Article extends Component {
             <div className="form-group">
               <label className="control-label">Tags</label>
               {articleTags.map((v, i) => {
-                return <span key={i}><input ref={'tags' + i} type="checkbox" defaultValue={v._id} defaultChecked={article.tags && ~article.tags.indexOf(v._id) ? true : false} /> {v.name} </span>
+                return <span key={i}><input ref={'tags' + i} type="checkbox" value={v._id}
+                                            defaultChecked={article.tags && ~article.tags.indexOf(v._id) ? true : false}/> {v.name} </span>
               })}
             </div>
 
             <div className="form-group">
               <label className="control-label">Status</label>
               <select ref="enabled" defaultValue={article.enabled} className="form-control">
-                <option defaultValue={true}>Enabled</option>
-                <option defaultValue={false}>Disbaled</option>
+                <option value={true}>Enabled</option>
+                <option value={false}>Disbaled</option>
               </select>
             </div>
 
             <div className="form-group">
               <label className="control-label">Intro</label>
-              <RichTextEditor data={article.introduction} />
+              <RichTextEditor data={article.introduction}/>
             </div>
             <div className="form-group">
               <label className="control-label">Content</label>
-              <RichTextEditor data={article.content} />
+              <RichTextEditor data={article.content}/>
+
             </div>
 
             <Button onClick={this.handleSubmit.bind(this, article._id)}>
               Submit
             </Button>
 
-            <Alert data={articleProps.editData} loading={articleProps.editing} error={articleProps.editError} validateMsg={this.state.validateMsg} showAlert={this.state.showAlert} />
+            <Alert data={articleProps.editData} loading={articleProps.editing} error={articleProps.editError}
+                   validateMsg={this.state.validateMsg} showAlert={this.state.showAlert}/>
           </form>
 
         </div>
@@ -98,6 +102,7 @@ export default class Article extends Component {
       return <State {...articleProps} />
     }
   }
+
   handleSubmit(id) {
     let data = formatForm(this, [
         {
@@ -108,7 +113,7 @@ export default class Article extends Component {
           name: 'author',
           rules: ['isRequired'],
           msgs: ['Author is required.']
-        },{
+        }, {
           name: 'type',
           rules: ['isRequired'],
           msgs: ['Type is required.']
