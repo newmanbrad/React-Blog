@@ -6,7 +6,6 @@ import formatForm from '../../utils/formatForm';
 import { editOver } from '../../utils/actionOver';
 import * as articleActions from '../../redux/modules/admin/article';
 import State from './State';
-import m from '../../utils/moReactUtils';
 import { pushState } from 'redux-router';
 import RichTextEditor from '../../components/RichTextEditor';
 
@@ -30,25 +29,7 @@ export default class Article extends Component {
   state = {
     validateMsg: null,
     showAlert: false
-  }
-  componentDidMount() {
-    let
-      article = this.props.article;
-
-    if (article.data && article.data.data) {
-      m.createStyle('/static/scripts/umeditor/themes/default/css/umeditor.css');
-      m.createScript('/static/scripts/umeditor/third-party/jquery.min.js', function() {
-        m.createScript('/static/scripts/umeditor/umeditor.config.js', function() {
-          m.createScript('/static/scripts/umeditor/umeditor.min.js', function() {
-            m.createScript('/static/scripts/umeditor/lang/zh-cn/zh-cn.js', function() {
-              introEditor = UM.getEditor('introduction');
-              contentEditor = UM.getEditor('content');
-            })
-          })
-        })
-      })
-    }
-  }
+  };
   render() {
     let
       articleProps = this.props.article;
@@ -57,7 +38,6 @@ export default class Article extends Component {
       let {article, articleTypes, articleTags} = articleProps.data.data;
       return (
         <div className="main">
-
 
           <PageHeader>{article._id ? 'Edit Post' : 'Add Post'}</PageHeader>
 
@@ -76,7 +56,7 @@ export default class Article extends Component {
               <label className="control-label">Type</label>
               <select ref="type" defaultValue={String(article.type)} className="form-control">
                 {articleTypes.map((v, i) => {
-                  return <option key={i} value={v._id}>{v.name}</option>
+                  return <option key={i} defaultValue={v._id}>{v.name}</option>
                 })}
               </select>
             </div>
@@ -84,15 +64,15 @@ export default class Article extends Component {
             <div className="form-group">
               <label className="control-label">Tags</label>
               {articleTags.map((v, i) => {
-                return <span key={i}><input ref={'tags' + i} type="checkbox" value={v._id} defaultChecked={article.tags && ~article.tags.indexOf(v._id) ? true : false} /> {v.name} </span>
+                return <span key={i}><input ref={'tags' + i} type="checkbox" defaultValue={v._id} defaultChecked={article.tags && ~article.tags.indexOf(v._id) ? true : false} /> {v.name} </span>
               })}
             </div>
 
             <div className="form-group">
               <label className="control-label">Status</label>
               <select ref="enabled" defaultValue={article.enabled} className="form-control">
-                <option value={true}>Enabled</option>
-                <option value={false}>Disbaled</option>
+                <option defaultValue={true}>Enabled</option>
+                <option defaultValue={false}>Disbaled</option>
               </select>
             </div>
 
