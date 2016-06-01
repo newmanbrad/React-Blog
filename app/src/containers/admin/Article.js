@@ -82,10 +82,10 @@ export default class Article extends Component {
               <label className="control-label">Intro</label>
               <RichTextEditor data={article.introduction}/>
             </div>
+            
             <div className="form-group">
               <label className="control-label">Content</label>
               <RichTextEditor data={article.content}/>
-
             </div>
 
             <Button onClick={this.handleSubmit.bind(this, article._id)}>
