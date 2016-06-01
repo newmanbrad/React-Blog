@@ -1,3 +1,7 @@
+/**
+* Bootstrap Override - Custom Styles Go Here.
+**/
+
 $primary: #428bca;
 $success: #5cb85c;
 $warning: #f0ad4e;
@@ -15,7 +19,6 @@ $link-hover-color: darken($link-color, 15%);
 $font-family: Tahoma, Arial, Helvetica, sans-serif;
 
 // box-shadows
-
 @mixin box-shadow($shadow...) {
   -webkit-box-shadow: $shadow;
   -moz-box-shadow: $shadow;
@@ -23,7 +26,6 @@ $font-family: Tahoma, Arial, Helvetica, sans-serif;
 }
 
 // transition
-
 @mixin transition($transition...) {
   -webkit-transition: $transition;
   -moz-transition: $transition;
@@ -31,21 +33,12 @@ $font-family: Tahoma, Arial, Helvetica, sans-serif;
   transition: $transition;
 }
 
-// reset
-// ------------
 
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, input, select, textarea label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, hgroup, menu, nav, section, time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-ul, ol {
-  list-style: none;
+button {
+  a, a:hover, a:active, a:focus {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 a {
@@ -58,15 +51,6 @@ a {
     color: $link-hover-color;
     text-decoration: underline;
   }
-}
-
-input,
-select,
-textarea {
-  font-size: inherit;
-  font-style: inherit;
-  font-family: inherit;
-  outline: none;
 }
 
 img {
@@ -84,11 +68,6 @@ h1 {
 
 h3 {
   font-size: 18px;
-}
-
-input::-moz-focus-inner {
-  border: 0;
-  padding: 0;
 }
 
 .clear {
@@ -139,6 +118,14 @@ select.form-control {
   height: 32px;
 }
 
+.p-r-5 {
+  padding-right: 5px;
+}
+
+.p-r-10 {
+  padding-right: 10px;
+}
+
 .wd1 {
   width: 100px;
 }
@@ -167,22 +154,6 @@ select.form-control {
   height: 76px;
 }
 
-.btn {
-  display: inline-block;
-  height: 30px;
-  padding: 0 8px;
-  line-height: 30px;
-  text-align: center;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  background: #fff;
-  cursor: pointer;
-  @include transition(background linear .2s);
-  &:hover {
-    background: #EBEBEB;
-    text-decoration: none;
-  }
-}
 
 // pagelist
 // ------------
@@ -555,9 +526,6 @@ a.label {
   margin-top: 150px;
 }
 
-// 前台编辑器中显示的内容
-// ------------
-
 pre {
   font-size: 1em;
   line-height: 1.5;
@@ -574,16 +542,6 @@ pre {
   }
 }
 
-table.t1 {
-  td, th {
-    padding: 5px 10px;
-    border: 1px solid #DDD;
-  }
-  th {
-    background: #F7F7F7;
-    text-align: left;
-  }
-}
 
 // umeditor 矫正
 // ------------

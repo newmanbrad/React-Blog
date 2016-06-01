@@ -9,6 +9,9 @@ import PageList from '../../components/PageList';
 import State from './State';
 import { deleteOver } from '../../utils/actionOver';
 
+// Bootstrap components
+import { Table, PageHeader, Button } from 'react-bootstrap';
+
 function fetchData(getState, dispatch, location) {
   return dispatch(load({params: {...location.query, x: 'admin'}}));
 }
@@ -24,47 +27,51 @@ function fetchData(getState, dispatch, location) {
 export default class AdminList extends Component {
   state = {
     showAlert: false
-  }
+  };
   render() {
     let props = this.props,
         list = props.list,
         detail = props.detail;
 
     if (list.data && list.data.data) {
-      let
-        {xData, pageList} = list.data.data;
+      let {xData, pageList} = list.data.data;
 
       return (
         <div className="main">
-          <Link to={ADMINPATH + 'admin'} className="btn">Add Admin</Link>&nbsp;&nbsp;
+          <PageHeader>Administrators</PageHeader>
+
+          <Button><Link to={ADMINPATH + 'admin'}>Add Admininstrator</Link></Button>
+
           <Alert data={detail.deleteData} loading={detail.deleteing} error={detail.deleteError} showAlert={this.state.showAlert} />
-          <div className="table2_wrap">
-            <table className="table2">
-              <tbody>
-              <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>Actions</th>
-              </tr>
-              {xData.map((x, i) => {
-                return (
-                  <tr key={i}>
-                    <td>{(pageList.current - 1) * pageList.size + i + 1}</td>
-                    <td>{x.name}</td>
-                    <td>{x.email}</td>
-                    <td>******</td>
-                    <td>
-                      <Link to={ADMINPATH + 'admin'} query={{id: x._id}}>Edit</Link>&nbsp;&nbsp;
-                      <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, x._id)}>Delete</a>
-                    </td>
-                  </tr>
-                )
-              })}
-              </tbody>
-            </table>
-          </div>
+
+          <Table responsive striped condensed>
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Password</th>
+              <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {xData.map((x, i) => {
+              return (
+                <tr key={i}>
+                  <td>{(pageList.current - 1) * pageList.size + i + 1}</td>
+                  <td>{x.name}</td>
+                  <td>{x.email}</td>
+                  <td>******</td>
+                  <td>
+                    <Link className="p-r-5" to={ADMINPATH + 'admin'} query={{id: x._id}}>Edit</Link>
+                    <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, x._id)}>Delete</a>
+                  </td>
+                </tr>
+              )
+            })}
+            </tbody>
+          </Table>
+
           <PageList {...pageList} path={ADMINPATH + 'adminList'} />
         </div>
       )
