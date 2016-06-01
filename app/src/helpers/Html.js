@@ -30,6 +30,7 @@ export default class Html extends Component {
           <meta name="apple-mobile-web-app-capable" content="yes"/>
 
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"/>
+          <link rel="stylesheet" href="//cdn.quilljs.com/0.20.1/quill.snow.css" />
           {DocumentMeta.renderAsReact()}
           {/* OVERRIDE Styles - styles (will be present only in production with webpack extract text plugin) */}
           {Object.keys(assets.styles).map((style, key) =>

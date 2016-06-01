@@ -8,6 +8,10 @@ import * as articleActions from '../../redux/modules/admin/article';
 import State from './State';
 import m from '../../utils/moReactUtils';
 import { pushState } from 'redux-router';
+import RichTextEditor from '../../components/RichTextEditor';
+
+// Bootstrap components
+import { PageHeader, Button } from 'react-bootstrap';
 
 let contentEditor, introEditor;
 
@@ -53,64 +57,61 @@ export default class Article extends Component {
       let {article, articleTypes, articleTags} = articleProps.data.data;
       return (
         <div className="main">
-          <table className="table1">
-            <tbody>
-            <tr>
-              <td className="td1">&nbsp;</td>
-              <td><h2>{article._id ? 'Edit Article' : 'Add Article'}</h2></td>
-            </tr>
-            <tr>
-              <td className="td1">Title：</td>
-              <td><input type="text" ref="title" className="form-control wd4" defaultValue={article.title} /></td>
-            </tr>
-            <tr>
-              <td className="Author">Author：</td>
-              <td><input type="text" ref="author" className="form-control" defaultValue={article.author} /></td>
-            </tr>
-            <tr>
-              <td className="td1">Article：</td>
-              <td>
-                <select ref="type" defaultValue={String(article.type)} className="form-control">
-                  {articleTypes.map((v, i) => {
-                    return <option key={i} value={v._id}>{v.name}</option>
-                  })}
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td className="td1">Tags：</td>
-              <td>
-                {articleTags.map((v, i) => {
-                  return <span key={i}><input ref={'tags' + i} type="checkbox" value={v._id} defaultChecked={article.tags && ~article.tags.indexOf(v._id) ? true : false} /> {v.name} </span>
+
+
+          <PageHeader>{article._id ? 'Edit Post' : 'Add Post'}</PageHeader>
+
+          <form>
+            <div className="form-group">
+              <label className="control-label">Title</label>
+              <input type="text" ref="title" className="form-control" defaultValue={article.title} />
+            </div>
+
+            <div className="form-group">
+              <label className="control-label">Author</label>
+              <input type="text" ref="author" className="form-control" defaultValue={article.author} />
+            </div>
+
+            <div className="form-group">
+              <label className="control-label">Type</label>
+              <select ref="type" defaultValue={String(article.type)} className="form-control">
+                {articleTypes.map((v, i) => {
+                  return <option key={i} value={v._id}>{v.name}</option>
                 })}
-              </td>
-            </tr>
-            <tr>
-              <td className="td1">Status：</td>
-              <td>
-                <select ref="enabled" defaultValue={article.enabled} className="form-control">
-                  <option value={true}>Enabled</option>
-                  <option value={false}>Disbaled</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td className="td1">Intro：</td>
-              <td dangerouslySetInnerHTML={{__html: `<script type="text/plain" id="introduction" style="width: 900px;">${article.introduction != null ? article.introduction : ''}</script>`}}></td>
-            </tr>
-            <tr>
-              <td className="td1">Content：</td>
-              <td dangerouslySetInnerHTML={{__html: `<script type="text/plain" id="content" style="width: 900px;">${article.content != null ? article.content : ''}</script>`}}></td>
-            </tr>
-            <tr>
-              <td className="td1">&nbsp;</td>
-              <td>
-                <a href="javascript:void(0)" className="btn" onClick={this.handleSubmit.bind(this, article._id)}>Save</a>&nbsp;&nbsp;
-                <Alert data={articleProps.editData} loading={articleProps.editing} error={articleProps.editError} validateMsg={this.state.validateMsg} showAlert={this.state.showAlert} />
-              </td>
-            </tr>
-            </tbody>
-          </table>
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label className="control-label">Tags</label>
+              {articleTags.map((v, i) => {
+                return <span key={i}><input ref={'tags' + i} type="checkbox" value={v._id} defaultChecked={article.tags && ~article.tags.indexOf(v._id) ? true : false} /> {v.name} </span>
+              })}
+            </div>
+
+            <div className="form-group">
+              <label className="control-label">Status</label>
+              <select ref="enabled" defaultValue={article.enabled} className="form-control">
+                <option value={true}>Enabled</option>
+                <option value={false}>Disbaled</option>
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label className="control-label">Intro</label>
+              <RichTextEditor data={article.introduction} />
+            </div>
+            <div className="form-group">
+              <label className="control-label">Content</label>
+              <RichTextEditor data={article.content} />
+            </div>
+
+            <Button onClick={this.handleSubmit.bind(this, article._id)}>
+              Submit
+            </Button>
+
+            <Alert data={articleProps.editData} loading={articleProps.editing} error={articleProps.editError} validateMsg={this.state.validateMsg} showAlert={this.state.showAlert} />
+          </form>
+
         </div>
       )
     } else {
@@ -118,8 +119,7 @@ export default class Article extends Component {
     }
   }
   handleSubmit(id) {
-    let
-      data = formatForm(this, [
+    let data = formatForm(this, [
         {
           name: 'title',
           rules: ['isRequired'],

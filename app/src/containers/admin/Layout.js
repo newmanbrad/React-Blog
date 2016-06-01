@@ -7,7 +7,7 @@ import connectData from '../../helpers/connectData';
 import '../layout.scss';
 
 // Bootstrap components
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Navbar, Nav} from 'react-bootstrap';
 
 function fetchData(getState, dispatch) {
   if (!isLoaded(getState())) {
@@ -39,15 +39,15 @@ export default class Layout extends Component {
               </Navbar.Header>
               <Navbar.Collapse>
                 <Nav>
-                  <NavItem><Link to={ADMINPATH + 'blogInfo'}>Site Info</Link></NavItem>
-                  <NavItem><Link to={ADMINPATH + 'articleList'}>Posts</Link></NavItem>
-                  <NavItem><Link to={ADMINPATH + 'articleTypeList'}>Types</Link></NavItem>
-                  <NavItem><Link to={ADMINPATH + 'articleTagList'}>Tags</Link></NavItem>
-                  <NavItem><Link to={ADMINPATH + 'commentList'}>Comments</Link></NavItem>
-                  <NavItem><Link to={ADMINPATH + 'singlePageList'}>Pages</Link></NavItem>
-                  <NavItem><Link to={ADMINPATH + 'userList'}>Users</Link></NavItem>
-                  <NavItem><Link to={ADMINPATH + 'adminList'}>Admins</Link></NavItem>
-                  <NavItem><Link to={ADMINPATH + 'linkList'}>Links</Link></NavItem>
+                  <li><Link to={ADMINPATH + 'blogInfo'}>Site Info</Link></li>
+                  <li><Link to={ADMINPATH + 'articleList'}>Posts</Link></li>
+                  <li><Link to={ADMINPATH + 'articleTypeList'}>Types</Link></li>
+                  <li><Link to={ADMINPATH + 'articleTagList'}>Tags</Link></li>
+                  <li><Link to={ADMINPATH + 'commentList'}>Comments</Link></li>
+                  <li><Link to={ADMINPATH + 'singlePageList'}>Pages</Link></li>
+                  <li><Link to={ADMINPATH + 'userList'}>Users</Link></li>
+                  <li><Link to={ADMINPATH + 'adminList'}>Admins</Link></li>
+                  <li><Link to={ADMINPATH + 'linkList'}>Links</Link></li>
                 </Nav>
               </Navbar.Collapse>
             </Navbar>

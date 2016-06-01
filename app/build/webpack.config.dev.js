@@ -26,6 +26,9 @@ module.exports = {
     publicPath: 'http://' + envConfig.dev.webpackServer.host + ':' + envConfig.dev.webpackServer.port + '/static/dist/'
   },
   module: {
+    // Shut off warnings about using pre-built javascript files
+    // as Quill.js unfortunately ships one as its `main`.
+    noParse: /node_modules\/quill\/dist/,
     loaders: [
       { test: /\.js$/, exclude: /node_modules/, loaders: ['babel?' + JSON.stringify(babelConfig), 'eslint']},
       { test: /\.json$/, loader: 'json'},
