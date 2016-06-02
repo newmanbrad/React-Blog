@@ -27,12 +27,24 @@ function fetchData(getState, dispatch, location) {
 )
 export default class Article extends Component {
 
-  // todo: add onbody change to capture the text field values and se them.
-  
   state = {
     validateMsg: null,
     showAlert: false
   };
+
+  constructor(props) {
+    super(props);
+    this.state = { article: props.article };
+    this.onBodyChange = this.onBodyChange.bind(this);
+  }
+
+
+  // todo: add onbody change to capture the text field values and see them.
+  onBodyChange(body) {
+    this.setState({
+      article: { ...this.state.article, body }
+    });
+  }
 
   render() {
     let articleProps = this.props.article;
@@ -82,12 +94,12 @@ export default class Article extends Component {
 
             <div className="form-group">
               <label className="control-label">Intro</label>
-              <TextEditor theme="snow" defaultValue={article.introduction} ref="introduction"/>
+              <TextEditor theme="snow" defaultValue={article.introduction} ref="introduction" onChange={this.onBodyChange}/>
             </div>
 
             <div className="form-group">
               <label className="control-label">Content</label>
-              <TextEditor theme="snow" defaultValue={article.content} ref="content"/>
+              <TextEditor theme="snow" defaultValue={article.content} ref="content" onChange={this.onBodyChange}/>
             </div>
 
             <Button onClick={this.handleSubmit.bind(this, article._id)}>
@@ -130,7 +142,7 @@ export default class Article extends Component {
     if (data) {
 
 
-      console.log(data);
+      console.log(this.state);
       if (id) {
         editOver(props.update({params: {id}, data}), this, ADMINPATH + 'articleList');
       } else {
