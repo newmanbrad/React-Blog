@@ -7,7 +7,7 @@ import {editOver} from '../../utils/actionOver';
 import * as articleActions from '../../redux/modules/admin/article';
 import State from './State';
 import {pushState} from 'redux-router';
-import RichTextEditor from '../../components/RichTextEditor';
+import TextEditor from '../../components/TextEditor';
 
 // Bootstrap components
 import {PageHeader, Button} from 'react-bootstrap';
@@ -26,14 +26,16 @@ function fetchData(getState, dispatch, location) {
   {...articleActions, pushState}
 )
 export default class Article extends Component {
+
+  // todo: add onbody change to capture the text field values and se them.
+  
   state = {
     validateMsg: null,
     showAlert: false
   };
 
   render() {
-    let
-      articleProps = this.props.article;
+    let articleProps = this.props.article;
 
     if (articleProps.data && articleProps.data.data) {
       let {article, articleTypes, articleTags} = articleProps.data.data;
@@ -80,12 +82,12 @@ export default class Article extends Component {
 
             <div className="form-group">
               <label className="control-label">Intro</label>
-              <RichTextEditor data={article.introduction}/>
+              <TextEditor theme="snow" defaultValue={article.introduction} ref="introduction"/>
             </div>
-            
+
             <div className="form-group">
               <label className="control-label">Content</label>
-              <RichTextEditor data={article.content}/>
+              <TextEditor theme="snow" defaultValue={article.content} ref="content"/>
             </div>
 
             <Button onClick={this.handleSubmit.bind(this, article._id)}>
@@ -126,8 +128,9 @@ export default class Article extends Component {
       props = this.props;
 
     if (data) {
-      data.introduction = introEditor.getContent();
-      data.content = contentEditor.getContent();
+
+
+      console.log(data);
       if (id) {
         editOver(props.update({params: {id}, data}), this, ADMINPATH + 'articleList');
       } else {
