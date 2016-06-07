@@ -16,13 +16,11 @@ function createMethodsAndConstants(prefix, actions, action, constants, methods, 
       `${prefix}${pageName}/${name}_SUCCESS`,
       `${prefix}${pageName}/${name}_FAIL`
     ];
-    // 常量
     Object.assign(constants, {
       [name]: types[0],
       [name + '_SUCCESS']: types[1],
       [name + '_FAIL']: types[2]
     });
-    // 方法
     if (action === 'C') {
       methods.create = createMethod('post', types, prefix);
     } else if (action === 'U') {
@@ -108,7 +106,7 @@ export default function createCRUD(prefix, actions, pageName) {
           deleteError: action.error
         };
     }
-  }
+  };
 
   return { methods, createReducer };
 }

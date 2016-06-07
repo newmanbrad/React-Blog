@@ -35,14 +35,19 @@ export default class Article extends Component {
   constructor(props) {
     super(props);
     this.state = { article: props.article };
-    this.onBodyChange = this.onBodyChange.bind(this);
+    this.onIntroductionChange = this.onIntroductionChange.bind(this);
+    this.onContentChange = this.onContentChange.bind(this);
   }
 
-
-  // todo: add onbody change to capture the text field values and see them.
-  onBodyChange(body) {
+  onIntroductionChange(introduction) {
     this.setState({
-      article: { ...this.state.article, body }
+      article: { ...this.state.article.data.data.article, introduction }
+    });
+  }
+
+  onContentChange(content) {
+    this.setState({
+      article: { ...this.state.article.data.data.article, content }
     });
   }
 
@@ -94,12 +99,12 @@ export default class Article extends Component {
 
             <div className="form-group">
               <label className="control-label">Intro</label>
-              <TextEditor theme="snow" defaultValue={article.introduction} ref="introduction" onChange={this.onBodyChange}/>
+              <TextEditor theme="snow" defaultValue={article.introduction} ref="introduction" onChange={this.onIntroductionChange}/>
             </div>
 
             <div className="form-group">
               <label className="control-label">Content</label>
-              <TextEditor theme="snow" defaultValue={article.content} ref="content" onChange={this.onBodyChange}/>
+              <TextEditor theme="snow" defaultValue={article.content} ref="content" onChange={this.onContentChange}/>
             </div>
 
             <Button onClick={this.handleSubmit.bind(this, article._id)}>
@@ -118,7 +123,9 @@ export default class Article extends Component {
   }
 
   handleSubmit(id) {
-    let data = formatForm(this, [
+    console.log(this.state);
+
+    let data = formatForm(this.state.article, [
         {
           name: 'title',
           rules: ['isRequired'],
@@ -141,8 +148,8 @@ export default class Article extends Component {
 
     if (data) {
 
+      console.log(data);
 
-      console.log(this.state);
       if (id) {
         editOver(props.update({params: {id}, data}), this, ADMINPATH + 'articleList');
       } else {
