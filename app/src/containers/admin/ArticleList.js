@@ -10,7 +10,7 @@ import State from './State';
 import { deleteOver } from '../../utils/actionOver';
 
 // Bootstrap components
-import {PageHeader, Button} from 'react-bootstrap';
+import {PageHeader, Button, Table} from 'react-bootstrap';
 
 function fetchData(getState, dispatch, location) {
   return dispatch(load({params: {...location.query}}));
@@ -43,13 +43,13 @@ export default class ArticleList extends Component {
           <PageHeader>Post Administration</PageHeader>
           <div className="row">
             <div className="col-md-12">
-              <Button className="btn-primary"><Link to={ADMINPATH + 'article'}>Add Post</Link></Button>
+              <Button className="btn-primary"><Link to={ADMINPATH + 'article'}>Create Post</Link></Button>
               <Alert data={article.deleteData} loading={article.deleteing} error={article.deleteError} showAlert={this.state.showAlert} />
             </div>
           </div>
           <div className="row">
             <div className="col-md-12 m-t-10">
-              <table className="table">
+              <Table responsive>
                 <tbody>
                 <tr>
                   <th>ID</th>
@@ -89,7 +89,7 @@ export default class ArticleList extends Component {
                   )
                 })}
                 </tbody>
-              </table>
+              </Table>
             </div>
           </div>
           <PageList {...pageList} path={ADMINPATH + 'articleList'} />

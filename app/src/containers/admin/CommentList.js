@@ -9,6 +9,9 @@ import PageList from '../../components/PageList';
 import State from './State';
 import { deleteOver } from '../../utils/actionOver';
 
+// Bootstrap components
+import {PageHeader, Table} from 'react-bootstrap';
+
 function fetchData(getState, dispatch, location) {
   return dispatch(load({params: {...location.query, x: 'comment'}}));
 }
@@ -35,34 +38,43 @@ export default class CommentList extends Component {
         {xData, pageList} = list.data.data;
 
       return (
-        <div className="main">
-          <Alert data={detail.deleteData} loading={detail.deleteing} error={detail.deleteError} showAlert={this.state.showAlert} />
-          <div className="table2_wrap">
-            <table className="table2">
-              <tbody>
-              <tr>
-                <th>ID</th>
-                <th>Email</th>
-                <th>Created</th>
-                <th>Updated</th>
-                <th>Actions</th>
-              </tr>
-              {xData.map((x, i) => {
-                return (
-                  <tr key={i}>
-                    <td>{(pageList.current - 1) * pageList.size + i + 1}</td>
-                    <td>{x.user && x.user.email || x.admin && x.admin.email}</td>
-                    <td>{x.time}</td>
-                    <td>{x.content.slice(0, 40) + (x.content.length > 40 ? '...' : '')}</td>
-                    <td>
-                      <Link to='/article' query={{id: x.article.id}}>Edit</Link>&nbsp;&nbsp;
-                      <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, x._id)}>Delete</a>
-                    </td>
-                  </tr>
-                )
-              })}
-              </tbody>
-            </table>
+        <div className="container-fluid">
+          <PageHeader>Comment Administration</PageHeader>
+
+          <div className="row">
+            <div className="col-md-12">
+              <Alert data={detail.deleteData} loading={detail.deleteing} error={detail.deleteError} showAlert={this.state.showAlert} />
+             </div>
+          </div>
+
+          <div className="row">
+            <div className="col-md-12 m-t-10">
+              <Table responsive>
+                <tbody>
+                <tr>
+                  <th>ID</th>
+                  <th>Email</th>
+                  <th>Created</th>
+                  <th>Updated</th>
+                  <th>Actions</th>
+                </tr>
+                {xData.map((x, i) => {
+                  return (
+                    <tr key={i}>
+                      <td>{(pageList.current - 1) * pageList.size + i + 1}</td>
+                      <td>{x.user && x.user.email || x.admin && x.admin.email}</td>
+                      <td>{x.time}</td>
+                      <td>{x.content.slice(0, 40) + (x.content.length > 40 ? '...' : '')}</td>
+                      <td>
+                        <Link to='/article' query={{id: x.article.id}}>Edit</Link>&nbsp;&nbsp;
+                        <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, x._id)}>Delete</a>
+                      </td>
+                    </tr>
+                  )
+                })}
+                </tbody>
+              </Table>
+            </div>
           </div>
           <PageList {...pageList} path={ADMINPATH + 'commentList'} />
         </div>

@@ -9,6 +9,9 @@ import PageList from '../../components/PageList';
 import State from './State';
 import { deleteOver } from '../../utils/actionOver';
 
+// Bootstrap components
+import {PageHeader, Button, Table} from 'react-bootstrap';
+
 function fetchData(getState, dispatch, location) {
   return dispatch(load({params: {...location.query, x: 'link'}}));
 }
@@ -36,33 +39,42 @@ export default class LinkList extends Component {
         {xData, pageList} = list.data.data;
 
       return (
-        <div className="main">
-          <Link to={ADMINPATH + 'link'} className="btn">Add Link</Link>&nbsp;&nbsp;
-          <Alert data={detail.deleteData} loading={detail.deleteing} error={detail.deleteError} showAlert={this.state.showAlert} />
-          <div className="table2_wrap">
-            <table className="table2">
-              <tbody>
-              <tr>
-                <th>ID</th>
-                <th>Link</th>
-                <th>URL</th>
-                <th>Actions</th>
-              </tr>
-              {xData.map((x, i) => {
-                return (
-                  <tr key={i}>
-                    <td>{(pageList.current - 1) * pageList.size + i + 1}</td>
-                    <td>{x.name}</td>
-                    <td>{x.url}</td>
-                    <td>
-                      <Link to={ADMINPATH + 'link'} query={{id: x._id}}>Edit</Link>&nbsp;&nbsp;
-                      <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, x._id)}>Delete</a>
-                    </td>
-                  </tr>
-                )
-              })}
-              </tbody>
-            </table>
+        <div className="container-fluid">
+          <PageHeader>Link Administration</PageHeader>
+          
+          <div className="row">
+            <div className="col-md-12">
+              <Button className="btn-primary"><Link to={ADMINPATH + 'link'}>Create Link</Link></Button>
+              <Alert data={detail.deleteData} loading={detail.deleteing} error={detail.deleteError} showAlert={this.state.showAlert} />
+            </div>
+          </div>
+          
+          <div className="row">
+            <div className="col-md-12">
+              <Table responsive>
+                <tbody>
+                <tr>
+                  <th>ID</th>
+                  <th>Link</th>
+                  <th>URL</th>
+                  <th>Actions</th>
+                </tr>
+                {xData.map((x, i) => {
+                  return (
+                    <tr key={i}>
+                      <td>{(pageList.current - 1) * pageList.size + i + 1}</td>
+                      <td>{x.name}</td>
+                      <td>{x.url}</td>
+                      <td>
+                        <Link to={ADMINPATH + 'link'} query={{id: x._id}}>Edit</Link>&nbsp;&nbsp;
+                        <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, x._id)}>Delete</a>
+                      </td>
+                    </tr>
+                  )
+                })}
+                </tbody>
+              </Table>
+            </div>  
           </div>
           <PageList {...{...pageList, path: ADMINPATH + 'LinkList'}} />
         </div>

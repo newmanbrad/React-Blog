@@ -37,41 +37,48 @@ export default class AdminList extends Component {
       let {xData, pageList} = list.data.data;
 
       return (
-        <div className="main">
-          <PageHeader>Administrators</PageHeader>
+        <div className="container-fluid">
+          <PageHeader>Site Administrators</PageHeader>
 
-          <Button><Link to={ADMINPATH + 'admin'}>Add Admininstrator</Link></Button>
+          <div className="row">
+            <div className="col-md-12">
+              <Button className="btn-primary"><Link to={ADMINPATH + 'admin'}>Add Admininstrator</Link></Button>
+              <Alert data={detail.deleteData} loading={detail.deleteing} error={detail.deleteError} showAlert={this.state.showAlert} />
+            </div>
+          </div>
 
-          <Alert data={detail.deleteData} loading={detail.deleteing} error={detail.deleteError} showAlert={this.state.showAlert} />
+          <div className="row">
+            <div className="col-md-12 m-t-10">
 
-          <Table responsive striped condensed>
-            <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Password</th>
-              <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {xData.map((x, i) => {
-              return (
-                <tr key={i}>
-                  <td>{(pageList.current - 1) * pageList.size + i + 1}</td>
-                  <td>{x.name}</td>
-                  <td>{x.email}</td>
-                  <td>******</td>
-                  <td>
-                    <Link className="p-r-5" to={ADMINPATH + 'admin'} query={{id: x._id}}>Edit</Link>
-                    <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, x._id)}>Delete</a>
-                  </td>
+              <Table responsive>
+                <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Password</th>
+                  <th>Actions</th>
                 </tr>
-              )
-            })}
-            </tbody>
-          </Table>
-
+                </thead>
+                <tbody>
+                {xData.map((x, i) => {
+                  return (
+                    <tr key={i}>
+                      <td>{(pageList.current - 1) * pageList.size + i + 1}</td>
+                      <td>{x.name}</td>
+                      <td>{x.email}</td>
+                      <td>******</td>
+                      <td>
+                        <Link className="p-r-5" to={ADMINPATH + 'admin'} query={{id: x._id}}>Edit</Link>
+                        <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, x._id)}>Delete</a>
+                      </td>
+                    </tr>
+                  )
+                })}
+                </tbody>
+              </Table>
+            </div>
+           </div>
           <PageList {...pageList} path={ADMINPATH + 'adminList'} />
         </div>
       )
