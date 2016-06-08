@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import connectData from '../../helpers/connectData';
 import Alert from '../../components/Alert';
 import formatForm from '../../utils/formatForm';
@@ -9,7 +10,7 @@ import State from './State';
 import { pushState } from 'redux-router';
 
 // Bootstrap components
-import { PageHeader, Button, Form, FormGroup, Col, ControlLabel } from 'react-bootstrap';
+import { PageHeader, Button, Form, FormGroup, Col, ControlLabel, ButtonToolbar } from 'react-bootstrap';
 
 function fetchData(getState, dispatch, location) {
   return dispatch(detailActions.load({params: {x: 'admin', id: location.query.id}}));
@@ -66,10 +67,11 @@ export default class Admin extends Component {
 
             <Col md={2}></Col>
             <Col md={10}>
-              <Button className="btn-primary m-t-10" onClick={this.handleSubmit.bind(this, xData._id)}>
-                Submit
-              </Button>
-              <Alert data={detail.editData} loading={detail.editing} error={detail.editError} validateMsg={this.state.validateMsg} showAlert={this.state.showAlert} />
+              <ButtonToolbar>
+                <Button active><Link to={ADMINPATH + 'adminList'}>Back</Link></Button>
+                <Button bsStyle="primary" active onClick={this.handleSubmit.bind(this, xData._id)}>Submit</Button>
+                <Alert data={detail.editData} loading={detail.editing} error={detail.editError} validateMsg={this.state.validateMsg} showAlert={this.state.showAlert} />
+              </ButtonToolbar>
             </Col>
           </Form>
         </div>
