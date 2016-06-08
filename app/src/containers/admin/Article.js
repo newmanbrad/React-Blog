@@ -20,6 +20,7 @@ function fetchData(getState, dispatch, location) {
 
 @connectData(fetchData)
 @connect(
+  // map state to props
   state => ({
     article: state.adminArticle
   }),
@@ -34,21 +35,24 @@ export default class Article extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { article: props.article };
+    //this.state = { article: props.article };
     this.onIntroductionChange = this.onIntroductionChange.bind(this);
     this.onContentChange = this.onContentChange.bind(this);
   }
 
   onIntroductionChange(introduction) {
     this.setState({
-      article: { ...this.state.article.data.data.article, introduction }
+      introduction: introduction
     });
   }
 
   onContentChange(content) {
-    this.setState({
-      article: { ...this.state.article.data.data.article, content }
-    });
+
+    let newState = {
+      content: content
+    };
+
+    this.setState(newState);
   }
 
   render() {
@@ -99,12 +103,12 @@ export default class Article extends Component {
 
             <div className="form-group">
               <label className="control-label">Intro</label>
-              <TextEditor theme="snow" defaultValue={article.introduction} ref="introduction" onChange={this.onIntroductionChange}/>
+              <TextEditor theme="snow" value={article.introduction} ref="introduction" onChange={this.onIntroductionChange}/>
             </div>
 
             <div className="form-group">
               <label className="control-label">Content</label>
-              <TextEditor theme="snow" defaultValue={article.content} ref="content" onChange={this.onContentChange}/>
+              <TextEditor theme="snow" value={article.content} ref="content" onChange={this.onContentChange}/>
             </div>
 
             <Button onClick={this.handleSubmit.bind(this, article._id)}>
@@ -123,9 +127,8 @@ export default class Article extends Component {
   }
 
   handleSubmit(id) {
-    console.log(this.state);
-
-    let data = formatForm(this.state.article, [
+    
+    let data = formatForm(this, [
         {
           name: 'title',
           rules: ['isRequired'],
@@ -147,9 +150,11 @@ export default class Article extends Component {
       props = this.props;
 
     if (data) {
-
-      console.log(data);
-
+      
+      // add text field values
+      data.content = this.state.content;
+      data.introduction = this.state.introduction;
+      
       if (id) {
         editOver(props.update({params: {id}, data}), this, ADMINPATH + 'articleList');
       } else {

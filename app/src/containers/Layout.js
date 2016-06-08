@@ -95,7 +95,7 @@ export default class Layout extends Component {
   }
   handleToggleNav = () => {
     this.setState({showNav: !this.state.showNav});
-  }
+  };
   handleSearch = () => {
     const
       search = this.refs.search,
@@ -108,7 +108,7 @@ export default class Layout extends Component {
 
     this.props.pushState(null, '/', {keyword: search.value});
     search.value = '';
-  }
+  };
   handleScroll = () => {
     clearTimeout(timer);
     timer = setTimeout(() => {
