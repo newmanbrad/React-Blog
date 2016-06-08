@@ -9,6 +9,9 @@ import PageList from '../../components/PageList';
 import State from './State';
 import { deleteOver } from '../../utils/actionOver';
 
+// Bootstrap components
+import {PageHeader, Button} from 'react-bootstrap';
+
 function fetchData(getState, dispatch, location) {
   return dispatch(load({params: {...location.query}}));
 }
@@ -36,8 +39,9 @@ export default class ArticleList extends Component {
         {articles, articleTypes, pageList} = articleList.data.data;
 
       return (
-        <div className="main admin">
-          <Link to={ADMINPATH + 'article'} className="btn">Add Article</Link>&nbsp;&nbsp;
+        <div className="main">
+          <PageHeader>Post Administration</PageHeader>
+          <Button><Link to={ADMINPATH + 'article'}>Add Post</Link></Button>
           <Alert data={article.deleteData} loading={article.deleteing} error={article.deleteError} showAlert={this.state.showAlert} />
           <div className="table2_wrap">
             <table className="table2">
