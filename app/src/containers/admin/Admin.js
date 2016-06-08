@@ -9,7 +9,7 @@ import State from './State';
 import { pushState } from 'redux-router';
 
 // Bootstrap components
-import { PageHeader, Button } from 'react-bootstrap';
+import { PageHeader, Button, Form, FormGroup, Col, ControlLabel } from 'react-bootstrap';
 
 function fetchData(getState, dispatch, location) {
   return dispatch(detailActions.load({params: {x: 'admin', id: location.query.id}}));
@@ -33,31 +33,45 @@ export default class Admin extends Component {
     if (detail.data && detail.data.data) {
       let {xData} = detail.data.data;
       return (
-        <div className="main admin">
+        <div className="container-fluid">
+          <PageHeader>{xData._id ? '  Edit User' : 'Create User'}</PageHeader>
 
-          <PageHeader>{xData._id ? '  Edit User' : 'Add User'}</PageHeader>
+          <Form horizontal>
+            <FormGroup controlId="formHorizontalName">
+              <Col componentClass={ControlLabel} sm={2}>
+                Name
+              </Col>
+              <Col sm={10}>
+                <input type="text" ref="name" className="form-control" placeholder="Full Name" defaultValue={xData.name} />
+              </Col>
+            </FormGroup>
 
-          <form>
-            <div className="form-group">
-              <label className="control-label">Name</label>
-              <input type="text" ref="name" className="form-control" defaultValue={xData.name} />
-            </div>
-            <div className="form-group">
-              <label className="control-label">Email</label>
-              <input type="text" ref="email" className="form-control" defaultValue={xData.email} />
-            </div>
-            <div className="form-group">
-              <label className="control-label">Password</label>
-              <input type="password" ref="password" className="form-control" />
-            </div>
+            <FormGroup controlId="formHorizontalEmail">
+              <Col componentClass={ControlLabel} sm={2}>
+                Email
+              </Col>
+              <Col sm={10}>
+                <input type="email" ref="email" className="form-control" placeholder="Email Address" defaultValue={xData.email} />
+              </Col>
+            </FormGroup>
 
-            <Button className="btn" onClick={this.handleSubmit.bind(this, xData._id)}>
-              Submit
-            </Button>
-            
-            <Alert data={detail.editData} loading={detail.editing} error={detail.editError} validateMsg={this.state.validateMsg} showAlert={this.state.showAlert} />
-          </form>
+            <FormGroup controlId="formHorizontalPassword">
+              <Col componentClass={ControlLabel} sm={2}>
+                Password
+              </Col>
+              <Col sm={10}>
+                <input type="password" ref="password" className="form-control" placeholder=""/>
+              </Col>
+            </FormGroup>
 
+            <Col md={2}></Col>
+            <Col md={10}>
+              <Button className="btn-primary m-t-10" onClick={this.handleSubmit.bind(this, xData._id)}>
+                Submit
+              </Button>
+              <Alert data={detail.editData} loading={detail.editing} error={detail.editError} validateMsg={this.state.validateMsg} showAlert={this.state.showAlert} />
+            </Col>
+          </Form>
         </div>
       )
     } else {

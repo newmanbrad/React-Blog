@@ -92,31 +92,6 @@ h3 {
   display: none;
 }
 
-// form
-// ------------
-
-.form-control {
-  display: inline-block;
-  height: 20px;
-  padding: 5px 5px;
-  color: #666;
-  vertical-align: middle;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, .075));
-  @include transition(border linear .2s, box-shadow linear .2s);
-  &:focus {
-    border-color: rgba(82, 168, 236, .8);
-    outline: 0;
-    @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(82, 168, 236, .6));
-  }
-}
-
-select.form-control {
-  height: 32px;
-}
-
 .p-r-5 {
   padding-right: 5px;
 }
