@@ -34,7 +34,7 @@ export default class Admin extends Component {
       let {xData} = detail.data.data;
       return (
         <div className="container-fluid">
-          <PageHeader>{xData._id ? '  Edit User' : 'Create User'}</PageHeader>
+          <PageHeader>{xData._id ? '  Edit Administrator' : 'Create Administrator'}</PageHeader>
 
           <Form horizontal>
             <FormGroup controlId="formHorizontalName">
