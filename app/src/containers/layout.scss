@@ -33,7 +33,6 @@ $font-family: Tahoma, Arial, Helvetica, sans-serif;
   transition: $transition;
 }
 
-
 button {
   a, a:hover, a:active, a:focus {
     text-decoration: none;
@@ -152,6 +151,19 @@ select.form-control {
 
 .hg1 {
   height: 76px;
+}
+
+// margins
+.m-t-5 {
+  margin-top: 5px;
+}
+
+.m-t-10 {
+  margin-top: 10px;
+}
+
+.m-t-20 {
+  margin-top: 20px;
 }
 
 
