@@ -140,8 +140,8 @@ export default class Article extends Component {
             <Col md={2}></Col>
             <Col md={10}>
               <ButtonToolbar>
-                <Button active><Link to={ADMINPATH + 'articleList'}>Back</Link></Button>
-                <Button bsStyle="primary" active  onClick={this.handleSubmit.bind(this, article._id)}>Submit</Button>
+                <Button><Link to={ADMINPATH + 'articleList'}>Back</Link></Button>
+                <Button bsStyle="primary" onClick={this.handleSubmit.bind(this, article._id)}>Submit</Button>
                 <Alert data={articleProps.editData} loading={articleProps.editing} error={articleProps.editError} validateMsg={this.state.validateMsg} showAlert={this.state.showAlert}/>
               </ButtonToolbar>
             </Col>

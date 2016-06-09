@@ -68,8 +68,8 @@ export default class Admin extends Component {
             <Col md={2}></Col>
             <Col md={10}>
               <ButtonToolbar>
-                <Button active><Link to={ADMINPATH + 'adminList'}>Back</Link></Button>
-                <Button bsStyle="primary" active onClick={this.handleSubmit.bind(this, xData._id)}>Submit</Button>
+                <Button><Link to={ADMINPATH + 'adminList'}>Back</Link></Button>
+                <Button bsStyle="primary" onClick={this.handleSubmit.bind(this, xData._id)}>Submit</Button>
                 <Alert data={detail.editData} loading={detail.editing} error={detail.editError} validateMsg={this.state.validateMsg} showAlert={this.state.showAlert} />
               </ButtonToolbar>
             </Col>

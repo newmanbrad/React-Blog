@@ -50,7 +50,7 @@ export default class ArticleList extends Component {
           <div className="row">
             <div className="col-md-12 m-t-10">
               <Table responsive>
-                <tbody>
+               <thead>
                 <tr>
                   <th>ID</th>
                   <th>Title</th>
@@ -64,6 +64,8 @@ export default class ArticleList extends Component {
                   <th>Status</th>
                   <th>Actions</th>
                 </tr>
+                </thead>
+                <tbody>
                 {articles.map((article, i) => {
                   return (
                     <tr key={i}>
@@ -82,7 +84,7 @@ export default class ArticleList extends Component {
                       <td>{article.lastEditTime.slice(0, 10)}</td>
                       <td>{article.enabled ? 'Enabled' : 'Disabled'}</td>
                       <td>
-                        <Link to={ADMINPATH + 'article'} query={{id: article._id}}>Edit</Link>&nbsp;&nbsp;
+                        <Link className="p-r-5" to={ADMINPATH + 'article'} query={{id: article._id}}>Edit</Link>
                         <a href="javascript:void(0)" onClick={this.handleDelete.bind(this, article._id)}>Delete</a>
                       </td>
                     </tr>

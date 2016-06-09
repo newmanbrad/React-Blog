@@ -1,16 +1,15 @@
-var
-  G = {
-    ADMINPATH: require('../src/config/dev').adminPath,
-    __CLIENT__: true,
-    __SERVER__: false,
-    __DEVELOPMENT__: true,
-    __DEVTOOLS__: true  // <-------- DISABLE redux-devtools HERE
-  },
-  path = require('path'),
-  webpack = require('webpack'),
-  WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin'), // https://github.com/halt-hammerzeit/webpack-isomorphic-tools
-  envConfig = require('../../env.config'),
-  babelConfig = require('./babel.config')(G.__DEVELOPMENT__, G.__CLIENT__);
+var G = {
+      ADMINPATH: require('../src/config/dev').adminPath,
+      __CLIENT__: true,
+      __SERVER__: false,
+      __DEVELOPMENT__: true,
+      __DEVTOOLS__: true  // <-------- DISABLE redux-devtools HERE
+    },
+    path = require('path'),
+    webpack = require('webpack'),
+    WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin'), // https://github.com/halt-hammerzeit/webpack-isomorphic-tools
+    envConfig = require('../../env.config'),
+    babelConfig = require('./babel.config')(G.__DEVELOPMENT__, G.__CLIENT__);
 
 module.exports = {
   devtool: 'inline-source-map',
