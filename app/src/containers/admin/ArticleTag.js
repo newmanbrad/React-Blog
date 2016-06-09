@@ -36,7 +36,7 @@ export default class ArticleTag extends Component {
       let {xData} = detail.data.data;
       return (
         <div className="container-fluid">
-          <PageHeader>{xData._id ? 'Add Tag' : 'Edit Tag'}</PageHeader>
+          <PageHeader>{xData._id ? 'Edt Tag' : 'Create Tag'}</PageHeader>
 
           <Form horizontal>
 
