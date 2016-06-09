@@ -13,8 +13,6 @@ import TextEditor from '../../components/TextEditor';
 // Bootstrap components
 import { PageHeader, Button, Form, FormGroup, Col, ControlLabel, ButtonToolbar } from 'react-bootstrap';
 
-let contentEditor, introEditor;
-
 function fetchData(getState, dispatch, location) {
   return dispatch(articleActions.load({params: {id: location.query.id}}));
 }
