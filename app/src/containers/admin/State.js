@@ -5,8 +5,6 @@ export default class State extends Component {
   render() {
     let {loading, error, data} = this.props;
 
-    console.log(loading, error, data);
-
     return (
       <div className="container-fluid">
         {loading ? 'Loading...' :
