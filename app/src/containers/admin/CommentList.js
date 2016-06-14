@@ -55,7 +55,7 @@ export default class CommentList extends Component {
                   <th>ID</th>
                   <th>Email</th>
                   <th>Created</th>
-                  <th>Updated</th>
+                  <th>Comment</th>
                   <th>Actions</th>
                 </tr>
                 {xData.map((x, i) => {
