@@ -7,6 +7,10 @@ import connectData from '../helpers/connectData';
 import PageList from '../components/PageList';
 import State from './State';
 
+// Bootstrap components
+import { Glyphicon } from 'react-bootstrap';
+
+
 function fetchData(getState, dispatch, location) {
   return dispatch(load({params: location.query}));
 }
@@ -33,17 +37,19 @@ export default class ArticleList extends Component {
           <DocumentMeta title={(typeOrTagName ? typeOrTagName + '_' : '') + blogInfo.title}/>
           {articles.map((article, i) => {
             return (
-              <article key={i} className="excerpt">
-                <header>
+              <article key={i}>
+                <h1>
+                  <Link to='/article' query={{id: article._id}} title={article.title}>{article.title}</Link>
                   <span className="icon-pencil"></span>
-                  <h2><Link to='/article' query={{id: article._id}} title={article.title}>{article.title}</Link></h2>
-                  <div>
-                    <i className="icon-user3"></i><span>{article.author}</span>
-                    <i className="icon-clock2"></i><span>{article.createTime.slice(0, 10)}</span>
-                    <i className="icon-eye"></i><span>{article.visits}</span>
-                    <i className="icon-comments"></i><span>{article.commentCount}</span>
-                  </div>
-                </header>
+                </h1>
+                <p className="lead">by <span>{article.author}</span></p>
+
+                <hr/>
+
+                <p><Glyphicon glyph="time"/> posted on {article.createTime.slice(0, 10)}</p>
+                <p>{article.visits} Views</p>
+                <p>{article.commentCount} Comments</p>
+
                 <section className="info" dangerouslySetInnerHTML={{__html: article.introduction}}></section>
                 <footer>
                 <span>
