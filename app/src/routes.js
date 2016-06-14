@@ -16,7 +16,7 @@ import AdminArticleTag from './containers/admin/ArticleTag';
 import AdminArticleTagList from './containers/admin/ArticleTagList';
 import AdminArticleType from './containers/admin/ArticleType';
 import AdminArticleTypeList from './containers/admin/ArticleTypeList';
-import AdminLink from './containers/admin/Link';
+import AdminLink from './containers/admin/Links';
 import AdminLinkList from './containers/admin/LinkList';
 import AdminSinglePage from './containers/admin/SinglePage';
 import AdminSinglePageList from './containers/admin/SinglePageList';

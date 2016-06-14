@@ -39,7 +39,7 @@ export default class Layout extends Component {
               </Navbar.Header>
               <Navbar.Collapse>
                 <Nav>
-                  <li><Link to={ADMINPATH + 'blogInfo'}>Site Info</Link></li>
+                  <li><Link to={ADMINPATH + 'blogInfo'}>Blog Administration</Link></li>
                   <li><Link to={ADMINPATH + 'articleList'}>Posts</Link></li>
                   <li><Link to={ADMINPATH + 'articleTypeList'}>Types</Link></li>
                   <li><Link to={ADMINPATH + 'articleTagList'}>Tags</Link></li>

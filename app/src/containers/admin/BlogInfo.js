@@ -6,7 +6,6 @@ import Alert from '../../components/Alert';
 import formatForm from '../../utils/formatForm';
 import { editOver } from '../../utils/actionOver';
 import * as blogInfoActions from '../../redux/modules/admin/blogInfo';
-import State from './State';
 import { pushState } from 'redux-router';
 
 // Bootstrap components
@@ -28,11 +27,11 @@ export default class BlogInfo extends Component {
   state = {
     validateMsg: null,
     showAlert: false
-  }
+  };
+  
   render() {
-    let
-      blogInfoProps = this.props.blogInfo,
-      {blogInfo, loggedin} = blogInfoProps.data.data;
+    let blogInfoProps = this.props.blogInfo,
+        {blogInfo, loggedin} = blogInfoProps.data.data;
 
     if (loggedin) {
       return (
@@ -79,7 +78,7 @@ export default class BlogInfo extends Component {
             <Col md={2}></Col>
             <Col md={10}>
               <ButtonToolbar>
-                <Button><Link to={ADMINPATH + 'articleTypeList'}>Back</Link></Button>
+                <Button><Link to={ADMINPATH}>Back</Link></Button>
                 <Button bsStyle="primary" onClick={this.handleSubmit.bind(this, blogInfo._id)}>Submit</Button>
                 <Alert data={blogInfoProps.editData} loading={blogInfoProps.editing} error={blogInfoProps.editError} validateMsg={this.state.validateMsg} showAlert={this.state.showAlert}/>
               </ButtonToolbar>
