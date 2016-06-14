@@ -26,7 +26,8 @@ function fetchData(getState, dispatch, location) {
 export default class SinglePageList extends Component {
   state = {
     showAlert: false
-  }
+  };
+  
   render() {
     let
       props = this.props,

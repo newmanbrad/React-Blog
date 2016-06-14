@@ -1,8 +1,8 @@
-import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {Link} from 'react-router';
-import {load} from '../../redux/modules/admin/userList';
-import {del} from '../../redux/modules/admin/user';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
+import { load } from '../../redux/modules/admin/userList';
+import { del } from '../../redux/modules/admin/user';
 import connectData from '../../helpers/connectData';
 import Alert from '../../components/Alert';
 import PageList from '../../components/PageList';
@@ -21,14 +21,12 @@ function fetchData(getState, dispatch, location) {
     list: state.adminUserList,
     detail: state.adminUser
   }),
-  {del, load}
+  { del, load }
 )
 export default class UserList extends Component {
   state = {
-    validateMsg: null,
     showAlert: false
   };
-
   render() {
     let props = this.props,
         list = props.list,
@@ -43,8 +41,7 @@ export default class UserList extends Component {
 
           <div className="row">
             <div className="col-md-12">
-              <Alert data={detail.deleteData} loading={detail.deleteing} error={detail.deleteError}
-                     showAlert={this.state.showAlert}/>
+              <Alert data={detail.deleteData} loading={detail.deleteing} error={detail.deleteError} showAlert={this.state.showAlert}/>
             </div>
           </div>
 

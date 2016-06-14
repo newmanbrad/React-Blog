@@ -20,9 +20,8 @@ function fetchData(getState, dispatch, location) {
 )
 export default class ArticleList extends Component {
   render() {
-    let
-      props = this.props,
-      articleList = props.articleList;
+    let props = this.props,
+        articleList = props.articleList;
 
     if (articleList.data && articleList.data.data) {
       let

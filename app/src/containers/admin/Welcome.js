@@ -22,7 +22,7 @@ export default class Welcome extends Component {
     if (auth.data && auth.data.data) {
       let name = auth.data.data.admin.name;
       return (
-        <div className="main">
+        <div className="container-fluid">
           <div className="welcome">
             <h1>Welcome{name ? ' ' + name + '!' : <span>! <Link to={ADMINPATH + 'login'}>Login</Link></span>}</h1>
           </div>

@@ -5,7 +5,6 @@ import { Link } from 'react-router';
 import { isLoaded, load } from '../../redux/modules/admin/blogInfo';
 import connectData from '../../helpers/connectData';
 import '../layout.scss';
-import State from './State';
 
 // Bootstrap components
 import { Navbar, Nav} from 'react-bootstrap';
@@ -25,8 +24,7 @@ export default class Layout extends Component {
     let blogInfoProps = this.props.blogInfo;
 
     if (blogInfoProps.data && blogInfoProps.data.data) {
-      let
-        {blogInfo} = blogInfoProps.data.data;
+      let {blogInfo} = blogInfoProps.data.data;
       return (
         <div className="admin">
           <DocumentMeta title='Blog Administration'/>

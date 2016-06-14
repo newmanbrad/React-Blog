@@ -26,7 +26,8 @@ function fetchData(getState, dispatch, location) {
 export default class Article extends Component {
   state = {
     validateMsg: null
-  }
+  };
+  
   render() {
     let
       props = this.props,
