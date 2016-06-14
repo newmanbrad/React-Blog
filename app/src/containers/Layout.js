@@ -9,7 +9,7 @@ import m from '../utils/moReactUtils';
 import './layout.scss';
 
 // Bootstrap components
-import { Col } from 'react-bootstrap';
+import { Col, FormGroup, Button, InputGroup } from 'react-bootstrap';
 
 // components
 import Header from '../components/layout/Header';
@@ -64,24 +64,30 @@ export default class Layout extends Component {
               <Col md={8}>
                 {this.props.children}
               </Col>
-              
+
               <Col md={4}>
-                <aside className="sidebar">
-                  <section>
-                    <h3>Search</h3>
-                    <div id="search" className="search">
-                      <input ref="search" type="text" placeholder="form place holder" className="form-control" />
-                      <a href="javascript:void(0)" onClick={this.handleSearch} className="btn">GO</a>
-                    </div>
+                <aside>
+                  <section className="well">
+                    <h4>Search</h4>
+                    <FormGroup>
+                      <InputGroup>
+                        <input ref="search" type="text" placeholder="Search" className="form-control" />
+                        <InputGroup.Button>
+                          <Button onClick={this.handleSearch}>Go</Button>
+                        </InputGroup.Button>
+                      </InputGroup>
+                    </FormGroup>
                   </section>
-                  <section ref="colors">
-                    <h3>section h3 layout</h3>
+
+                  <section ref="colors" className="well">
+                    <h4>Tags</h4>
                     {articleTags.map((tag, i) => {
                       return <Link key={i} to='/' query={{tagPath: tag.path}} className="label">{tag.name}</Link>
                     })}
                   </section>
-                  <section>
-                    <h3>Section H3</h3>
+
+                  <section className="well">
+                    <h4>Links</h4>
                     <ul>
                       {links.map((link, i) => {
                         return <li key={i}><a href={link.url} title={link.name} target="_blank">{link.name}</a></li>
@@ -90,8 +96,8 @@ export default class Layout extends Component {
                   </section>
                 </aside>
               </Col>
-              
-             </div> 
+
+             </div>
           </div>
           <footer className="footer" dangerouslySetInnerHTML={{__html: blogInfo.copyright}}></footer>
         </div>
