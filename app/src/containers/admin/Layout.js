@@ -26,7 +26,7 @@ export default class Layout extends Component {
     if (blogInfoProps.data && blogInfoProps.data.data) {
       let {blogInfo} = blogInfoProps.data.data;
       return (
-        <div className="admin">
+        <div className="container-fluid">
           <DocumentMeta title='Blog Administration'/>
           <header>
             <Navbar inverse>
