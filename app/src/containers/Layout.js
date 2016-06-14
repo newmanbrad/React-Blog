@@ -9,7 +9,7 @@ import m from '../utils/moReactUtils';
 import './layout.scss';
 
 // Bootstrap components
-import { Col, FormGroup, Button, InputGroup } from 'react-bootstrap';
+import { Col, FormGroup, Button, InputGroup, Glyphicon } from 'react-bootstrap';
 
 // components
 import Header from '../components/layout/Header';
@@ -73,7 +73,7 @@ export default class Layout extends Component {
                       <InputGroup>
                         <input ref="search" type="text" placeholder="Search" className="form-control" />
                         <InputGroup.Button>
-                          <Button onClick={this.handleSearch}>Go</Button>
+                          <Button onClick={this.handleSearch}><Glyphicon glyph="search" /></Button>
                         </InputGroup.Button>
                       </InputGroup>
                     </FormGroup>
