@@ -25,13 +25,14 @@ function fetchData(getState, dispatch, location) {
 )
 export default class UserList extends Component {
   state = {
+    validateMsg: null,
     showAlert: false
-  }
+  };
 
   render() {
     let props = this.props,
-      list = props.list,
-      detail = props.detail;
+        list = props.list,
+        detail = props.detail;
 
     if (list.data && list.data.data) {
       let {xData, pageList} = list.data.data;

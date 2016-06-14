@@ -5,8 +5,10 @@ export default class State extends Component {
   render() {
     let {loading, error, data} = this.props;
 
+    console.log(loading, error, data);
+
     return (
-      <div className="main">
+      <div className="container-fluid">
         {loading ? 'Loading...' :
           error ? 'An Error Has Occurred...' :
             data.msg === 'Message' ? <p>Message <Link to={ADMINPATH + 'login'}>Login</Link></p> :
