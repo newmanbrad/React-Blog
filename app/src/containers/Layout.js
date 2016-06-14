@@ -8,6 +8,9 @@ import connectData from '../helpers/connectData';
 import m from '../utils/moReactUtils';
 import './layout.scss';
 
+// Bootstrap components
+import { Col } from 'react-bootstrap';
+
 // components
 import Header from '../components/layout/Header';
 
@@ -53,33 +56,42 @@ export default class Layout extends Component {
           {articleTypes, blogInfo, articleTags, links} = layout.data.data;
 
       return (
-        <div className="index">
+        <div>
           <Header data={layout}/>
-          <div className="main">
-            {this.props.children}
-            <aside className="sidebar">
-              <section>
-                <h3>Search</h3>
-                <div id="search" className="search">
-                  <input ref="search" type="text" placeholder="form place holder" className="form-control" />
-                  <a href="javascript:void(0)" onClick={this.handleSearch} className="btn">GO</a>
-                </div>
-              </section>
-              <section ref="colors">
-                <h3>section h3 layout</h3>
-                {articleTags.map((tag, i) => {
-                  return <Link key={i} to='/' query={{tagPath: tag.path}} className="label">{tag.name}</Link>
-                })}
-              </section>
-              <section>
-                <h3>Section H3</h3>
-                <ul>
-                  {links.map((link, i) => {
-                    return <li key={i}><a href={link.url} title={link.name} target="_blank">{link.name}</a></li>
-                  })}
-                </ul>
-              </section>
-            </aside>
+          <div className="container-fluid">
+            <div class="row">
+
+              <Col md={8}>
+                {this.props.children}
+              </Col>
+              
+              <Col md={4}>
+                <aside className="sidebar">
+                  <section>
+                    <h3>Search</h3>
+                    <div id="search" className="search">
+                      <input ref="search" type="text" placeholder="form place holder" className="form-control" />
+                      <a href="javascript:void(0)" onClick={this.handleSearch} className="btn">GO</a>
+                    </div>
+                  </section>
+                  <section ref="colors">
+                    <h3>section h3 layout</h3>
+                    {articleTags.map((tag, i) => {
+                      return <Link key={i} to='/' query={{tagPath: tag.path}} className="label">{tag.name}</Link>
+                    })}
+                  </section>
+                  <section>
+                    <h3>Section H3</h3>
+                    <ul>
+                      {links.map((link, i) => {
+                        return <li key={i}><a href={link.url} title={link.name} target="_blank">{link.name}</a></li>
+                      })}
+                    </ul>
+                  </section>
+                </aside>
+              </Col>
+              
+             </div> 
           </div>
           <footer className="footer" dangerouslySetInnerHTML={{__html: blogInfo.copyright}}></footer>
         </div>
