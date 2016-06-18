@@ -21,34 +21,70 @@ export default class Header extends Component {
           {articleTypes, blogInfo, articleTags, links} = layout.data.data;
 
       return (
-        
-        <header>
-          <Navbar inverse className={classNames('header', {header_down: showHeaderDown})}>
-            <Navbar.Header>
-              <Navbar.Brand>
-                <Link to="/" className="logo">{blogInfo.title}</Link>
-              </Navbar.Brand>
-              <Navbar.Toggle />
-            </Navbar.Header>
-            <Navbar.Collapse>
-              <Nav>
-                <NavItem eventKey={1} href="#">About</NavItem>
-                <NavItem eventKey={2} href="#">Contact</NavItem>
-                <NavDropdown eventKey={3} title="Categories" id="basic-nav-dropdown">
-                  {articleTypes.map((v, i) => {
-                    return <MenuItem><Link key={i} to='/' query={{typePath: v.path}}>{v.name}</Link></MenuItem>
-                  })}
-                  <MenuItem divider />
-                  <MenuItem eventKey={3.3}>Separated link</MenuItem>
-                </NavDropdown>
-              </Nav>
-              <Nav pullRight>
-                <NavItem eventKey={1} href="#">Link Right</NavItem>
-                <NavItem eventKey={2} href="#">Link Right</NavItem>
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
-        </header>
+
+      <header>
+        <div className="widewrapper masthead">
+          <div className="container">
+
+            <Link to="/" className="logo" itemID="logo">{blogInfo.title}</Link>
+
+            <div id="mobile-nav-toggle" className="pull-right">
+              <a href="#" data-toggle="collapse" data-target=".tales-nav .navbar-collapse">
+                <i className="fa fa-bars"></i>
+              </a>
+            </div>
+
+            <nav className="pull-right tales-nav">
+              <div className="collapse navbar-collapse">
+                <ul className="nav nav-pills navbar-nav">
+
+                  <NavDropdown eventKey={3} title="Categories" id="basic-nav-dropdown">
+                    {articleTypes.map((v, i) => {
+                      return <MenuItem><Link key={i} to='/' query={{typePath: v.path}}>{v.name}</Link></MenuItem>
+                    })}
+                    <MenuItem divider />
+                    <MenuItem eventKey={3.3}>Separated link</MenuItem>
+                  </NavDropdown>
+
+                  <li className="dropdown active">
+                    <a className="dropdown-toggle"
+                       data-toggle="dropdown"
+                       href="#">
+                      Blog
+                      <b className="caret"></b>
+                    </a>
+                    <ul className="dropdown-menu">
+                      <li><a href="index.html">Blog</a></li>
+                      <li><a href="blog-detail.html">Blog Detail</a></li>
+                    </ul>
+                  </li>
+                  <NavItem eventKey={1} href="#">About</NavItem>
+                  <NavItem eventKey={2} href="#">Contact</NavItem>
+                </ul>
+              </div>
+            </nav>
+
+          </div>
+        </div>
+
+        <div className="widewrapper subheader">
+          <div className="container">
+            <div className="tales-breadcrumb">
+              <a href="#">Blog</a>
+            </div>
+
+            <div className="tales-searchbox">
+              <form action="#" method="get" accept-charset="utf-8">
+                <button className="searchbutton" type="submit">
+                  <i className="fa fa-search"></i>
+                </button>
+                <input className="searchfield" id="searchbox" type="text" placeholder="Search"/>
+              </form>
+            </div>
+          </div>
+        </div>
+      </header>
+
 
       )
     } else {

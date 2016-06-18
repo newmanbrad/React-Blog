@@ -31,6 +31,9 @@ export default class Html extends Component {
 
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"/>
           <link rel="stylesheet" href="//cdn.quilljs.com/0.20.1/quill.snow.css" />
+          
+          <link rel="stylesheet" href="../../../../node_modules/font-awesome/css/font-awesome.min.css"/>
+              
           {DocumentMeta.renderAsReact()}
           {/* OVERRIDE Styles - styles (will be present only in production with webpack extract text plugin) */}
           {Object.keys(assets.styles).map((style, key) =>
