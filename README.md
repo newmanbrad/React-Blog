@@ -1,5 +1,7 @@
 # React / Redux Blog
 
+This projec has been abandoned for this : https://github.com/newmanbrad/React-Blog-Duex
+
 Full Blog Engine and Admin built using React, Redux, Express and Mongo.
 
 Requires Mongo to be up and running on port:27017
